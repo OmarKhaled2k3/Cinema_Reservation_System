@@ -1,3 +1,5 @@
+package com.example.cinema_reservation_system;
+
 import java.util.ArrayList;
 
 public class Reservation implements Printable {

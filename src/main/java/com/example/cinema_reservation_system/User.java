@@ -1,3 +1,5 @@
+package com.example.cinema_reservation_system;
+
 abstract class User implements Printable {
     protected String name;
     protected String email;

@@ -1,3 +1,5 @@
+package com.example.cinema_reservation_system;
+
 import java.util.Scanner;
 
 public class Admin extends User implements Reservable{

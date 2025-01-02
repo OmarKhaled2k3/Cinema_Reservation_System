@@ -1,3 +1,5 @@
+package com.example.cinema_reservation_system;
+
 public class Movie implements Printable  {
     private String title;
     private String genre;

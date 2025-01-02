@@ -1,3 +1,5 @@
+package com.example.cinema_reservation_system;
+
 public class FoodItem implements Printable{
     private String name;
     private double price;

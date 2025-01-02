@@ -1,3 +1,5 @@
+package com.example.cinema_reservation_system;
+
 public class Seat implements Printable{
     private int seatNumber;
     private boolean isReserved;
