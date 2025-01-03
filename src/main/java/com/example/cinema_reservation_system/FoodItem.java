@@ -4,7 +4,7 @@ public class FoodItem implements Printable{
     private String name;
     private double price;
     private String type;
-    private int qty;
+    int qty;
     public FoodItem(String name, double price) {
         this.name = name;
         this.price = price;
