@@ -3,30 +3,30 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
 <!--Admin-->
 
 <StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.HelloController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <StackPane layoutX="255.0" layoutY="65.0" prefHeight="230.0" prefWidth="331.0">
+            <StackPane layoutX="288.0" layoutY="65.0" prefHeight="191.0" prefWidth="298.0">
                <children>
-                  <ListView fx:id="list_of_movies" prefHeight="230.0" prefWidth="322.0" />
+                  <ListView fx:id="list_of_movies" prefHeight="170.0" prefWidth="278.0" />
                </children>
             </StackPane>
-            <HBox layoutY="316.0" prefHeight="83.0" prefWidth="600.0">
+            <HBox layoutX="16.0" layoutY="316.0" prefHeight="83.0" prefWidth="584.0" spacing="70.0">
                <children>
+                  <Button fx:id="back_button" layoutX="186.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="back" />
                   <Button fx:id="add_button" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="Add" />
-                  <Separator fx:id="seperator1" prefHeight="2.0" prefWidth="192.0" />
-                  <Button fx:id="save_button" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="Save" />
-                  <Separator fx:id="separator2" prefWidth="200.0" />
                   <Button fx:id="remove_button" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="Remove" />
+                  <Button fx:id="save_button" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="Save" />
                </children>
             </HBox>
             <StackPane layoutX="235.0" layoutY="14.0" prefHeight="51.0" prefWidth="131.0">
@@ -38,13 +38,20 @@
                   </Label>
                </children>
             </StackPane>
-            <VBox layoutX="40.0" layoutY="80.0" prefHeight="200.0" prefWidth="131.0">
+            <VBox fx:id="iamgeuellabel" layoutX="14.0" layoutY="81.0" prefHeight="129.0" prefWidth="104.0" spacing="6.0">
                <children>
-                  <Label fx:id="name" text="Name" />
-                  <Separator fx:id="separator3" orientation="VERTICAL" prefHeight="200.0" />
-                  <Label fx:id="genre1" text="Genre" />
-                  <Separator fx:id="separator4" orientation="VERTICAL" prefHeight="200.0" />
-                  <Label fx:id="duration1" text="Duration" />
+                  <Label fx:id="name" prefHeight="27.0" prefWidth="33.0" text="Name" />
+                  <Label fx:id="genre1" prefHeight="27.0" prefWidth="34.0" text="Genre" />
+                  <Label fx:id="duration1" prefHeight="26.0" prefWidth="47.0" text="Duration" />
+                  <Label prefHeight="26.0" prefWidth="50.0" text="ImageUrl" />
+               </children>
+            </VBox>
+            <VBox layoutX="95.0" layoutY="81.0" spacing="6.0">
+               <children>
+                  <TextField fx:id="namebox" />
+                  <TextField fx:id="genrebox" />
+                  <TextField fx:id="durationbox" />
+                  <TextField fx:id="imageurlbox" />
                </children>
             </VBox>
          </children>
