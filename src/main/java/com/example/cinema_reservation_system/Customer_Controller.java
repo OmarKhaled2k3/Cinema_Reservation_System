@@ -26,7 +26,7 @@ public class Customer_Controller {
     private Label totalprice_label;
 
     private ObservableList<HBox> listViewItems = FXCollections.observableArrayList();
-    private List<FoodItem> orderList = new ArrayList<>();
+    private static List<FoodItem> orderList = new ArrayList<>();
 
     private FoodItem[] foodItems = {
             new FoodItem("Burger", 5.0),
@@ -49,7 +49,6 @@ public class Customer_Controller {
             "https://theallnaturalvegan.com/wp-content/uploads/2023/08/mango-juice-featured-image.jpg",// Juice
             "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Monster_Energy_drink_%28cropped%29.jpg/1200px-Monster_Energy_drink_%28cropped%29.jpg"// Energy-Drink
     };
-
 
     @FXML
     public void initialize() {
