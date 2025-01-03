@@ -2,6 +2,7 @@ module com.example.cinema_reservation_system {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires java.sql;
     requires java.logging;
 
 
