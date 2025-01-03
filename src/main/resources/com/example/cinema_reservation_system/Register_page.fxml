@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.RegisterPage">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="347.0" prefWidth="479.0">
+         <children>
+            <VBox layoutX="14.0" layoutY="81.0" prefHeight="175.0" prefWidth="120.0" spacing="14.0">
+               <children>
+                  <Label fx:id="namelabel" text="Name" />
+                  <Label fx:id="usernamelabel" text="Username" />
+                  <Label fx:id="emailLabel" text="Email" />
+                  <Label fx:id="passwoedlabel" text="Password" />
+                  <Label fx:id="confirmpasswordlabel" text="Confirm password" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <Label fx:id="registerlabel" layoutX="14.0" prefHeight="59.0" prefWidth="152.0" text="Register">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Label>
+            <VBox layoutX="188.0" layoutY="80.0" prefHeight="175.0" prefWidth="160.0" spacing="6.0">
+               <children>
+                  <TextField prefHeight="26.0" prefWidth="160.0" />
+                  <TextField />
+                  <TextField />
+                  <TextField />
+                  <TextField />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

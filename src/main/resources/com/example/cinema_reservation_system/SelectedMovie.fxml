@@ -14,7 +14,7 @@
         <AnchorPane prefHeight="37.0" prefWidth="702.0" />
         <MenuBar prefHeight="35.0" prefWidth="702.0" style="-fx-min-width: 100%; -fx-background-color: #353238;" />
         <Text fill="WHITE" layoutX="15.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15;" text="All Films" wrappingWidth="256.8037519454956" />
-        <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="651.0" layoutY="-1.0" minHeight="21.0" mnemonicParsing="false" onAction="#backToPrevScene" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Back" textAlignment="CENTER" textFill="#ebdfdf">
+        <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="651.0" layoutY="-1.0" minHeight="21.0" mnemonicParsing="false"  prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Back" textAlignment="CENTER" textFill="#ebdfdf">
             <font>
                 <Font size="18.0" />
             </font>
@@ -24,7 +24,7 @@
         </Button>
         <ImageView fx:id="selectedFilmPoster" fitHeight="297.0" fitWidth="193.0" layoutX="44.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../res/images/backgroundImages/DefaultFilmPoster.png" />
+                <Image url="" />
             </image>
         </ImageView>
         <Text fx:id="title" fill="black" layoutX="277.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOVIE TITLE" wrappingWidth="353.2851527631283">
@@ -37,22 +37,14 @@
                 <Font size="18.0" />
             </font>
         </Text>
-        <Text fill="black" layoutX="269.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From:">
+
+        <Text fill="black" layoutX="267.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration:">
             <font>
                 <Font size="18.0" />
             </font>
         </Text>
-        <Text fill="black" layoutX="267.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To:">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Text>
-        <Text fx:id="startDate" fill="black" layoutX="338.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dd-mm-yyyy">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Text>
-        <Text fx:id="endDate" fill="black" layoutX="338.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dd-mm-yyyy">
+
+        <Text fx:id="Duration" fill="black" layoutX="338.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
             <font>
                 <Font size="18.0" />
             </font>
@@ -62,18 +54,18 @@
                 <Font size="18.0" />
             </font>
         </Text>
-        <Text fx:id="showtime1" fill="black" layoutX="376.0" layoutY="356.0" onMouseClicked="Select" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+        <Text fx:id="showtime1" fill="black" layoutX="376.0" layoutY="356.0"  strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
             <font>
                 <Font size="18.0" />
             </font>
         </Text>
-        <Button fx:id="bookButton" layoutX="552.0" layoutY="337.0" mnemonicParsing="false" onAction="#goToBookingScene" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: white;" text="Book Now" />
-      <Text fx:id="showtime11" fill="black" layoutX="402.0" layoutY="356.0" onMouseClicked="Select" strokeType="OUTSIDE" strokeWidth="0.0" text=" " wrappingWidth="3.69140625">
+        <Button fx:id="bookButton" layoutX="552.0" layoutY="337.0" mnemonicParsing="false"  prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: white;" text="Book Now" />
+      <Text fx:id="showtime2" fill="black" layoutX="402.0" layoutY="356.0"  strokeType="OUTSIDE" strokeWidth="0.0" text=" " wrappingWidth="3.69140625">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="showtime12" fill="black" layoutX="433.0" layoutY="356.0" onMouseClicked="Select" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+      <Text fx:id="showtime3" fill="black" layoutX="433.0" layoutY="356.0"  strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
          <font>
             <Font size="18.0" />
          </font>
