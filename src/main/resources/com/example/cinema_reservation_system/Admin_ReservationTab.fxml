@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.HelloController">
+   <children>
+      <StackPane layoutX="199.0" layoutY="10.0" prefHeight="49.0" prefWidth="200.0">
+         <children>
+            <Label text="Reservations">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <VBox alignment="CENTER" layoutX="46.0" layoutY="70.0" prefHeight="230.0" prefWidth="200.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="102.0" text="Pick Movie:">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <ListView fx:id="movielist" prefHeight="207.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutX="308.0" layoutY="70.0" prefHeight="230.0" prefWidth="183.0" spacing="30.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="42.0" prefWidth="133.0" text="Pick Showtime:">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="radiobtn1" mnemonicParsing="false" text="Morning Showtime">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="optiontoggle" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="radiobtn2" mnemonicParsing="false" text="Mid-Day Showtime" toggleGroup="$optiontoggle">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="radiobtn3" mnemonicParsing="false" text="Night Showtime" toggleGroup="$optiontoggle">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </RadioButton>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="-1.0" layoutY="316.0" prefHeight="84.0" prefWidth="600.0" spacing="120.0">
+         <children>
+            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Back">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_createnew" layoutX="160.0" layoutY="32.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Create New">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_edit" layoutX="260.0" layoutY="32.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Edit">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

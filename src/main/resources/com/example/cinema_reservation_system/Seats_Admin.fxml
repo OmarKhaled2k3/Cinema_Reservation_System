@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.SeatsController">
+   <children>
+      <StackPane layoutX="126.0" layoutY="301.0" prefHeight="57.0" prefWidth="532.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="28.0" stroke="BLACK" strokeType="INSIDE" width="532.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Screen">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </StackPane>
+      <HBox fx:id="AllSeats" layoutX="44.0" layoutY="129.0" prefHeight="99.0" prefWidth="629.0" spacing="40.0">
+         <children>
+            <VBox fx:id="Left" alignment="BOTTOM_CENTER" prefHeight="132.0" prefWidth="142.0" spacing="5.0">
+               <children>
+                  <HBox prefHeight="24.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Rectangle fx:id="seat13" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat14" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat15" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Rectangle fx:id="seat10" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat11" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat12" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="123.0" prefHeight="24.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Rectangle fx:id="seat7" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat8" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat9" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="153.0" prefHeight="24.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Rectangle fx:id="seat4" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat5" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat6" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                     <padding>
+                        <Insets left="45.0" />
+                     </padding>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="153.0" prefHeight="24.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Rectangle fx:id="seat1" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat2" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat3" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                     <padding>
+                        <Insets left="60.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <VBox fx:id="Center" alignment="CENTER" prefHeight="144.0" prefWidth="332.0" spacing="1.0">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="27.0" prefWidth="228.0" spacing="4.0">
+                     <children>
+                        <Rectangle fx:id="seat54" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat55" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat56" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat57" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat58" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat59" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat60" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat61" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat62" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat63" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat64" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat65" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="27.0" prefWidth="228.0" spacing="4.0">
+                     <children>
+                        <Rectangle fx:id="seat43" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat44" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat45" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat46" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat47" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat48" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat49" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat50" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat51" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat52" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat53" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="220.0" spacing="4.0">
+                     <children>
+                        <Rectangle fx:id="seat33" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat34" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat35" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat36" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat37" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat38" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat39" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat40" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat41" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat42" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="220.0" spacing="4.0">
+                     <children>
+                        <Rectangle fx:id="seat24" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat25" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat26" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat27" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat28" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat29" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat30" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat31" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat32" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="25.0" prefWidth="304.0" spacing="4.0">
+                     <children>
+                        <Rectangle fx:id="seat16" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat17" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat18" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat19" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat20" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat21" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat22" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat23" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="Right" alignment="BOTTOM_CENTER" prefHeight="132.0" prefWidth="142.0" spacing="5.0">
+               <children>
+                  <HBox prefHeight="24.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Rectangle fx:id="seat78" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat79" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat80" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                     <padding>
+                        <Insets left="60.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Rectangle fx:id="seat75" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat76" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat77" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                     <padding>
+                        <Insets left="45.0" />
+                     </padding>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="123.0" prefHeight="24.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Rectangle fx:id="seat72" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat73" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat74" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="153.0" prefHeight="24.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Rectangle fx:id="seat69" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat70" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat71" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </Rectangle>
+                     </children>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="153.0" prefHeight="24.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Rectangle fx:id="seat66" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat67" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                        <Rectangle fx:id="seat68" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="24.0" onMouseClicked="#SelectSeat" stroke="BLACK" strokeDashOffset="1.0" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="24.0" />
+                     </children>
+                  </HBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="btn_save" layoutX="353.0" layoutY="513.0" mnemonicParsing="false" onMouseClicked="#CheckSeatsAvailability" prefHeight="39.0" prefWidth="88.0" text="Save">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="309.0" layoutY="49.0" text="Choose Seats" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <VBox alignment="TOP_CENTER" layoutX="85.0" layoutY="394.0" prefHeight="103.0" prefWidth="142.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="104.0" text="Seats Selected" textAlignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Label text="Seats" />
+                  <Label text="x5" />
+                  <Label text="Type" />
+                  <Label text="Price" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Label text="Total Price" />
+                  <Label text="Price" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
