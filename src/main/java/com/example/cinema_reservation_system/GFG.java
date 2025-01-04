@@ -8,18 +8,18 @@ public class GFG {
         try {
             // below two lines are used for connectivity.
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/test2",
+                    "jdbc:mysql://localhost:3306/cinema",
                     "root", "");
 
             Statement statement = connection.createStatement();
             ResultSet resultSet;
             resultSet = statement.executeQuery(
-                    "select * from cell");
+                    "SELECT * FROM movies");
             int cellid;
             String type;
             while (resultSet.next()) {
-                cellid = resultSet.getInt("cell_id");
-                type = resultSet.getString("type").trim();
+                cellid = resultSet.getInt("ID");
+                type = resultSet.getString("title").trim();
                 System.out.println("CellID : " + cellid
                         + " Type : " + type);
             }
@@ -30,5 +30,6 @@ public class GFG {
         catch (SQLException exception) {
             System.out.println(exception);
         }
-    } // function ends
-} // class ends
+    }
+
+}

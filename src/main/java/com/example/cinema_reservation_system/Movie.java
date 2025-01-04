@@ -5,16 +5,28 @@ public class Movie implements Printable  {
     private String genre;
     private int duration; // in minutes
     private int id;
+    private String imageurl;
 
-    public Movie(String title, String genre, int duration) {
+    public Movie(int id,String title, String genre, int duration, String imageurl) {
         this.title = title;
         this.genre = genre;
         this.duration = duration;
+        this.id = id;
+        this.imageurl = imageurl;
     }
 
     public String getTitle() { return title; }
     public String getGenre() { return genre; }
     public int getDuration() { return duration; }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
     @Override
     public void printDetails() {
         System.out.println("Movie ID: " + id);
