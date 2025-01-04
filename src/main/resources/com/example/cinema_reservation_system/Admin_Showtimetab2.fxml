@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.Admin_Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.HelloController">
    <children>
       <ListView fx:id="list_view" layoutX="286.0" layoutY="77.0" prefHeight="200.0" prefWidth="306.0" />
       <StackPane layoutX="205.0" layoutY="6.0" prefHeight="66.0" prefWidth="190.0">
