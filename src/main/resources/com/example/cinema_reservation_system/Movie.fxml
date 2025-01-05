@@ -15,7 +15,7 @@
 <!--Admin-->
 
 
-<AnchorPane prefHeight="536.0" prefWidth="863.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.HelloController">
+<AnchorPane prefHeight="536.0" prefWidth="863.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminMovieController">
    <children>
       <TableView fx:id="table_view" layoutX="288.0" layoutY="65.0" prefHeight="326.0" prefWidth="566.0">
         <columns>
@@ -28,22 +28,22 @@
       </TableView>
       <HBox alignment="CENTER" layoutX="140.0" layoutY="424.0" prefHeight="83.0" prefWidth="584.0" spacing="70.0">
          <children>
-            <Button fx:id="back_button" layoutX="186.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="Back">
+            <Button fx:id="back_button" layoutX="186.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" onAction="#goBack" text="Back">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="add_button" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="Add">
+            <Button fx:id="add_button" mnemonicParsing="false" prefHeight="42.0" onAction="#addMovie" prefWidth="88.0" text="Add">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="remove_button" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="Remove">
+            <Button fx:id="remove_button" mnemonicParsing="false" prefHeight="42.0" onAction="#removeMovie" prefWidth="88.0" text="Remove">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="save_button" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="Save">
+            <Button fx:id="save_button" mnemonicParsing="false" prefHeight="42.0" onAction="#saveMovie" prefWidth="88.0" text="Save">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

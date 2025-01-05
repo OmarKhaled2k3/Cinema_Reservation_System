@@ -22,7 +22,7 @@
       </StackPane>
       <HBox alignment="CENTER" layoutX="171.0" layoutY="456.0" prefHeight="68.0" prefWidth="531.0" spacing="50.0">
          <children>
-            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Back">
+            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Back" onAction="#goBack">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

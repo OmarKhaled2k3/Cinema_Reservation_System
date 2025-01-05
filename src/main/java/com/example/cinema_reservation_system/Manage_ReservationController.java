@@ -27,5 +27,10 @@ public class Manage_ReservationController {
     @FXML
     private void handleModifyButton(ActionEvent event) throws IOException {
         sceneController.switchToScene2(event);
+
+    }
+    @FXML
+    private void goBack() throws Exception{
+        SceneController.launchScene("Admin_ReservationTab.fxml");
     }
 }

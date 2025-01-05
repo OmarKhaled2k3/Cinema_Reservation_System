@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Admin_Controller {
 
@@ -20,7 +21,22 @@ public class Admin_Controller {
     private Button btn_save;
 
     @FXML
-    private ListView<Item> list_view;
+    private TableView<Item> table_view;
+
+    @FXML
+    private TableColumn<Item, String> name_column;
+
+    @FXML
+    private TableColumn<Item, Double> price_column;
+
+    @FXML
+    private TableColumn<Item, Integer> qty_column;
+
+    @FXML
+    private TableColumn<Item, String> type_column;
+
+    @FXML
+    private TableColumn<Item, String> url_column;
 
     @FXML
     private TextField name_field;
@@ -41,13 +57,24 @@ public class Admin_Controller {
 
     @FXML
     public void initialize() {
+        // Initialize the ObservableList
         itemList = FXCollections.observableArrayList();
-        list_view.setItems(itemList);
 
+        // Configure TableView columns
+        name_column.setCellValueFactory(new PropertyValueFactory<>("name"));
+        price_column.setCellValueFactory(new PropertyValueFactory<>("price"));
+        qty_column.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        type_column.setCellValueFactory(new PropertyValueFactory<>("type"));
+        url_column.setCellValueFactory(new PropertyValueFactory<>("url"));
+
+        // Set items to TableView
+        table_view.setItems(itemList);
+
+        // Set button actions
         btn_add.setOnAction(event -> addItem());
         btn_remove.setOnAction(event -> removeItem());
         btn_save.setOnAction(event -> saveItem());
-        list_view.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showItemDetails(newValue));
+        table_view.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showItemDetails(newValue));
     }
 
     private void addItem() {
@@ -73,7 +100,7 @@ public class Admin_Controller {
     }
 
     private void removeItem() {
-        Item selectedItem = list_view.getSelectionModel().getSelectedItem();
+        Item selectedItem = table_view.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             itemList.remove(selectedItem);
             clearFields();
@@ -83,7 +110,7 @@ public class Admin_Controller {
     }
 
     private void saveItem() {
-        Item selectedItem = list_view.getSelectionModel().getSelectedItem();
+        Item selectedItem = table_view.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             try {
                 selectedItem.setName(name_field.getText());
@@ -91,7 +118,7 @@ public class Admin_Controller {
                 selectedItem.setUrl(url_field.getText());
                 selectedItem.setPrice(Double.parseDouble(price_field.getText()));
                 selectedItem.setQty(Integer.parseInt(qty_field.getText()));
-                list_view.refresh();
+                table_view.refresh();
                 clearFields();
             } catch (NumberFormatException e) {
                 showAlert(Alert.AlertType.ERROR, "Error", "Please enter valid numeric values for price and quantity.");
@@ -127,6 +154,11 @@ public class Admin_Controller {
         alert.showAndWait();
     }
 
+    @FXML
+    private void goBack() throws Exception {
+        SceneController.launchScene("Admin_View.fxml");
+    }
+
     public static class Item {
         private String name;
         private double price;
@@ -156,10 +188,5 @@ public class Admin_Controller {
 
         public String getUrl() { return url; }
         public void setUrl(String url) { this.url = url; }
-
-        @Override
-        public String toString() {
-            return name + " - " + price + " - " + qty + " - " + type;
-        }
     }
 }

@@ -45,7 +45,7 @@
       </VBox>
       <HBox alignment="CENTER" layoutY="299.0" prefHeight="101.0" prefWidth="600.0" spacing="80.0">
          <children>
-            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Back">
+            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Back" onAction="#goBack1">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

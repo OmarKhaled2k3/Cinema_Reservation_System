@@ -31,7 +31,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
 
-            root = FXMLLoader.load(getClass().getResource("SelectMovie.fxml"));
+            root = FXMLLoader.load(getClass().getResource("Admin_View.fxml"));
             Main.primaryStage = primaryStage;
             primaryStage.setTitle("Cinema Reservation System");
             //primaryStage.initStyle(StageStyle.UNDECORATED);

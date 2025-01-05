@@ -28,12 +28,12 @@
       <ComboBox fx:id="box_movies" layoutX="208.0" layoutY="175.0" prefHeight="18.0" prefWidth="193.0" promptText="Movies" />
       <HBox alignment="CENTER" layoutX="-1.0" layoutY="286.0" prefHeight="100.0" prefWidth="600.0" spacing="150.0">
          <children>
-            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Back">
+            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Back" onAction="#goBack">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_continue" layoutX="270.0" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="89.0" text="Continue">
+            <Button fx:id="btn_continue" layoutX="270.0" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="89.0" text="Continue" onAction="#gotomanage2">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
