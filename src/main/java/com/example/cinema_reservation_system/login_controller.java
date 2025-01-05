@@ -61,7 +61,7 @@ public class login_controller implements Initializable {
 
     private boolean isValidLogin(String username, String password) {
         Database db = Database.getInstance();
-        String query = "SELECT isAdmin FROM accounts WHERE username = ? AND password = ?";
+        String query = "SELECT name, isAdmin FROM accounts WHERE username = ? AND password = ?";
 
         try (PreparedStatement preparedStatement = db.getConnection().prepareStatement(query)) {
             preparedStatement.setString(1, username);
@@ -69,10 +69,12 @@ public class login_controller implements Initializable {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
+                String name = resultSet.getString("name");
                 boolean isAdmin = resultSet.getInt("isAdmin") == 1;
 
-                // Redirect based on isAdmin value
+                // Redirect based on isAdmin value and pass first name to AdminPageController
                 if (isAdmin) {
+                    AdminPageController.setName(name);  // Assuming you add a setter in AdminPageController
                     SceneController.launchScene("Admin_View.fxml");
                 } else {
                     SceneController.launchScene("Customer_View.fxml");
@@ -86,4 +88,5 @@ public class login_controller implements Initializable {
         }
         return false; // Login is invalid
     }
+
 }

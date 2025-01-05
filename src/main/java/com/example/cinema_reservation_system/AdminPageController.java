@@ -39,6 +39,11 @@ public class AdminPageController implements Initializable {
         manageFoodButton.setDisable(false);
         manageShowtimesButton.setDisable(false);
         logOutButton.setDisable(false);
+
+        // Set first name label text
+        if (AdminName != null) {
+            firstNameLabel.setText(AdminName);
+        }
     }
 
     // This method is triggered when the "Manage Movies" button is clicked
@@ -69,5 +74,10 @@ public class AdminPageController implements Initializable {
     @FXML
     private void logOut(ActionEvent event) throws IOException {
         SceneController.launchScene("login_page.fxml");  // Assuming 'login_page' is an FXML file, use the correct name
+    }
+    private static String AdminName;
+
+    public static void setName(String name) {
+        AdminName = name;
     }
 }
