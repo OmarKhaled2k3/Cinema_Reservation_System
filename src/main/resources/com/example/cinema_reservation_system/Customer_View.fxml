@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.HelloController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.Cus_Controller">
    <children>
       <HBox alignment="CENTER" layoutX="189.0" layoutY="14.0" prefHeight="76.0" prefWidth="222.0">
          <children>
@@ -27,12 +27,12 @@
       </HBox>
       <VBox alignment="CENTER" layoutX="192.0" layoutY="101.0" prefHeight="181.0" prefWidth="216.0" spacing="35.0">
          <children>
-            <Button fx:id="btn_newreserv" alignment="CENTER" mnemonicParsing="false" prefHeight="41.0" prefWidth="158.0" text="New Reservation">
+            <Button fx:id="btn_newreserv" alignment="CENTER" mnemonicParsing="false" prefHeight="41.0" prefWidth="158.0" text="New Reservation" onAction="#handleNewReservation">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_mngreserv" alignment="CENTER" layoutX="39.0" layoutY="90.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="162.0" text="Manage Reservations">
+            <Button fx:id="btn_mngreserv" alignment="CENTER" layoutX="39.0" layoutY="90.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="162.0" onAction="#handleManageReservations" text="Manage Reservations">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

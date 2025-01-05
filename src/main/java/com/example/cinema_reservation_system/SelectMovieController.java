@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -119,5 +120,7 @@ public class SelectMovieController implements Initializable {
         return movies;
     }
 
-
+    public void goback(javafx.event.ActionEvent actionEvent) throws IOException {
+        SceneController.launchScene("Customer_View.fxml");
+    }
 }

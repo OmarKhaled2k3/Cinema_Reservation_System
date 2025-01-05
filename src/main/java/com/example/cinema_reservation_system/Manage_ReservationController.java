@@ -33,4 +33,8 @@ public class Manage_ReservationController {
     private void goBack() throws Exception{
         SceneController.launchScene("Admin_ReservationTab.fxml");
     }
+    @FXML
+    private void goBackc() throws Exception{
+        SceneController.launchScene("Customer_View.fxml");
+    }
 }

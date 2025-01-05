@@ -28,7 +28,7 @@
       </AnchorPane>
       <MenuBar prefHeight="35.0" prefWidth="702.0" style="-fx-min-width: 100%; -fx-background-color: black;" />
       <Text fill="WHITE" layoutX="15.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15;" text="Select Movie" wrappingWidth="256.8037519454956" />
-      <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="651.0" layoutY="-1.0" minHeight="21.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Back" textAlignment="CENTER" textFill="#ebdfdf">
+      <Button fx:id="backButton" contentDisplay="TOP" graphicTextGap="0.0" layoutX="651.0" layoutY="-1.0" minHeight="21.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: none; -fx-label-padding: -10; -fx-font-size: 12;" text="Back" onAction="#goback" textAlignment="CENTER" textFill="#ebdfdf">
          <font>
             <Font size="18.0" />
          </font>
