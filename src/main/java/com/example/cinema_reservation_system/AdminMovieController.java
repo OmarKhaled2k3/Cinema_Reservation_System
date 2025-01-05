@@ -78,20 +78,21 @@ public class AdminMovieController implements Initializable {
         try (ResultSet resultSet = db.getInstance().executeQuery(query)) {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
-                String genre = resultSet.getString("genre").trim();
                 String title = resultSet.getString("title").trim();
-                int duration = Integer.parseInt(resultSet.getString("duration").trim().split("")[0]);
+                String genre = resultSet.getString("genre").trim();
+                int duration = resultSet.getInt("duration");
                 String description = resultSet.getString("description").trim();
                 String imageurl = resultSet.getString("imageurl").trim();
 
                 // Create a new Movie object and add it to the movieList
-                movieList.add(new Movie(id,genre, title, duration, description, imageurl));
+                movieList.add(new Movie(id,title, genre, duration, description, imageurl));
             }
         } catch (SQLException e) {
             showAlert("Error", "Failed to load movies from database.");
         }
 
         table_view.setItems(movieList);
+
 
         table_view.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -140,7 +141,7 @@ public class AdminMovieController implements Initializable {
                 stmt.executeUpdate();
             }
 
-            movieList.add(new Movie('0',title, genre, duration, imageurl, description));
+            movieList.add(new Movie('0',title, genre, duration, description,imageurl));
             clearFields();
         } catch (NumberFormatException e) {
             showAlert("Error", "Duration must be a number.");
@@ -160,16 +161,22 @@ public class AdminMovieController implements Initializable {
                     String query = "DELETE FROM movies WHERE title = ?";
                     try (PreparedStatement stmt = Database.getInstance().getConnection().prepareStatement(query)) {
                         stmt.setString(1, selectedMovie.getTitle());
-                        stmt.executeUpdate();
+                        int rowsAffected = stmt.executeUpdate();
+                        if (rowsAffected > 0) {
+                            // If the movie was deleted from the database
+                            movieList.remove(selectedMovie);
+                            clearFields();
+                        } else {
+                            showAlert("Error", "No movie found with that title.");
+                        }
                     }
-                    movieList.remove(selectedMovie);
-                    clearFields();
                 } catch (SQLException e) {
-                    showAlert("Error", "Failed to delete movie.");
+                    showAlert("Error", "Failed to delete movie: " + e.getMessage());
                 }
             }
         }
     }
+
 
     @FXML
     private void saveMovie() {
@@ -184,12 +191,12 @@ public class AdminMovieController implements Initializable {
             try {
                 int duration = Integer.parseInt(durationStr);
 
-                String query = "UPDATE movies SET genre = ?, duration = ?, url = ?, description = ? WHERE title = ?";
+                String query = "UPDATE movies SET genre = ?, duration = ?, imageurl = ?, description = ? WHERE title = ?";
                 try (PreparedStatement stmt = Database.getInstance().getConnection().prepareStatement(query)) {
                     stmt.setString(1, genre);
                     stmt.setInt(2, duration);
-                    stmt.setString(3, url);
-                    stmt.setString(4, description);
+                    stmt.setString(3, description);
+                    stmt.setString(4, url);
                     stmt.setString(5, title);
                     stmt.executeUpdate();
                 }
