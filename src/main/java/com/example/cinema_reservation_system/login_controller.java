@@ -4,25 +4,31 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class login_controller implements Initializable {
 
     @FXML
     private TextField usernameBox;
+
     @FXML
     private PasswordField passwordBox;
+
     @FXML
     private Button logInButton;
+
     @FXML
     private Button registerbutton;
+
     @FXML
     private Label wrongCredentials;
 
@@ -39,23 +45,45 @@ public class login_controller implements Initializable {
         String password = passwordBox.getText();
 
         if (isValidLogin(username, password)) {
-            // Hide the error message if login is successful
+            // Login success: error message is hidden and the user is redirected appropriately
             wrongCredentials.setVisible(false);
-            SceneController.launchScene("Admin_View.fxml");  // Redirect to Admin Page after successful login
         } else {
-            // Show the error message if login fails
+            // Show error message for invalid login
             wrongCredentials.setText("Invalid username or password. Please try again.");
-            wrongCredentials.setVisible(true);  // Make the label visible
+            wrongCredentials.setVisible(true);
         }
     }
 
     @FXML
     private void launchRegister(ActionEvent event) throws IOException {
-        SceneController.launchScene("Register_page.fxml");  // Open the registration page
+        SceneController.launchScene("Register_page.fxml"); // Open the registration page
     }
 
     private boolean isValidLogin(String username, String password) {
-        // Dummy login logic, replace with real validation
-        return username.equals("admin") && password.equals("password");
+        Database db = Database.getInstance();
+        String query = "SELECT isAdmin FROM accounts WHERE username = ? AND password = ?";
+
+        try (PreparedStatement preparedStatement = db.getConnection().prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                boolean isAdmin = resultSet.getInt("isAdmin") == 1;
+
+                // Redirect based on isAdmin value
+                if (isAdmin) {
+                    SceneController.launchScene("Admin_View.fxml");
+                } else {
+                    SceneController.launchScene("Customer_View.fxml");
+                }
+                return true; // Login is valid
+            }
+        } catch (SQLException e) {
+            System.out.println("Error during login: " + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return false; // Login is invalid
     }
 }

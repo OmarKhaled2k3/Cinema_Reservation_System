@@ -39,7 +39,9 @@ public class Database {
             return null;
         }
     }
-
+    public Connection getConnection() {
+        return connection;
+    }
     // Main method for testing
     public static void main(String[] args) {
         try {

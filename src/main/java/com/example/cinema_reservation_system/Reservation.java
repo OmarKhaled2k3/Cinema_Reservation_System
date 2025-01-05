@@ -57,7 +57,7 @@ public class Reservation implements Printable {
     }
 
     // Getter and Setter for movieName (optional)
-    private Movie getMoviebyID(int id){
+    public Movie getMoviebyID(int id){
         Movie movie=null;
         try {
             Database db = Database.getInstance();
