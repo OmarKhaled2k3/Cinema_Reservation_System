@@ -137,7 +137,7 @@ public class Reservation implements Printable {
         this.movieId = 0;
         this.showtime = null;
         this.foodOrder=null;
-        this.seats.clear();
+        this.seats=null;
         this.id=id;
     }
     public void printDetails() {

@@ -14,6 +14,7 @@ public class SceneController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
     public static void launchScene (String sceneName) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(sceneName));
         Main.setRoot(loader.load());
@@ -21,6 +22,7 @@ public class SceneController {
         Main.getStage().setScene(scene);
         Main.getStage().show();
     }
+
     public void switchToScene1(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

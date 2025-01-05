@@ -7,11 +7,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -71,8 +73,22 @@ public class SelectMovieController implements Initializable {
         pic.setId(String.valueOf(id));
         hb.getChildren().add(pic);
         GridPane.setConstraints(pic, colIndex, rowIndex, 1, 1, HPos.CENTER, VPos.CENTER);
-        // grid.add(pic, imageCol, imageRow);
         grid.getChildren().addAll(pic);
+        Tooltip t = new Tooltip(movieDescription); Tooltip. install(pic, t);
+
+        pic.setOnMouseClicked(e -> {
+            // System.out.printf("Mouse clicked cell [%d, %d]%n", rowIndex, colIndex);
+            // System.out.println("Film Title: " + id);
+            try {
+                Reservation reservation = Reservation.getInstance();
+
+                reservation.setMovieId(id);
+                SceneController.launchScene("SelectedMovie.fxml");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
 
     }
 
