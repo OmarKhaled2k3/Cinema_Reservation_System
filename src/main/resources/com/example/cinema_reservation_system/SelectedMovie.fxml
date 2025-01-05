@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="404.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.HelloController">
+<AnchorPane prefHeight="404.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.SelectedMovieController">
     <children>
         <!-- Top Menu Bar -->
         <MenuBar prefHeight="35.0" prefWidth="633.0" style="-fx-background-color: #353238; -fx-min-width: 100%;" />
@@ -18,7 +18,7 @@
         <Text fill="WHITE" layoutX="15.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 15;" text="All Films" wrappingWidth="256.8" />
 
         <!-- Back Button -->
-        <Button fx:id="backButton" layoutX="551.0" layoutY="1.0" minHeight="21.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: none; -fx-font-size: 12;" text="Back" textAlignment="CENTER" textFill="#ebdfdf">
+        <Button fx:id="backButton" layoutX="551.0" layoutY="1.0" minHeight="21.0" mnemonicParsing="false" onAction="#backToMoviesScene" prefHeight="34.0" prefWidth="48.0" style="-fx-background-color: none; -fx-font-size: 12;" text="Back" textAlignment="CENTER" textFill="#ebdfdf">
             <font>
                 <Font size="18.0" />
             </font>
@@ -28,7 +28,7 @@
         </Button>
 
         <!-- Movie Poster -->
-        <ImageView fx:id="selectedFilmPoster" fitHeight="297.0" fitWidth="193.0" layoutX="44.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="selectedMoviePoster" fitHeight="297.0" fitWidth="193.0" layoutX="44.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
             <image>
             </image>
         </ImageView>
@@ -53,19 +53,12 @@
                 <Font size="18.0" />
             </font>
         </Text>
-        <Text fx:id="Duration" fill="black" layoutX="334.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="100.0">
+        <Text fx:id="Duration" fill="black" layoutX="347.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="100.0">
             <font>
                 <Font size="18.0" />
             </font>
         </Text>
-
-        <!-- Book Now Button -->
-        <Button fx:id="bookButton" layoutX="495.0" layoutY="334.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: white;" text="Book Now">
-            <tooltip>
-                <Tooltip text="Reserve your tickets now!" />
-            </tooltip>
-        </Button>
-      <HBox layoutX="266.0" layoutY="311.0" prefHeight="34.0" prefWidth="292.0">
+      <HBox fx:id="Showtimebox" layoutX="266.0" layoutY="311.0" prefHeight="34.0" prefWidth="292.0" spacing="5.0">
          <children>
       
               <!-- Showtimes -->

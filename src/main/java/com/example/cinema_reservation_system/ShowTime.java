@@ -5,11 +5,31 @@ import java.util.ArrayList;
 
 public class ShowTime implements Printable {
     private Movie movie;
-
-
     private LocalDateTime startTime;
     private ArrayList<Seat> seatList;
+    private ArrayList<Integer> seatIDList;
     private int id;
+
+    public ArrayList<Seat> getSeatList() {
+        return seatList;
+    }
+
+    public void setSeatList(ArrayList<Seat> seatList) {
+        this.seatList = seatList;
+        seatIDList=new ArrayList<Integer>();
+        for(Seat seat:seatList){
+            seatIDList.add(seat.getSeatNumber());
+        }
+    }
+    public void setSeatIDList(ArrayList<Seat> seatList){
+        seatIDList=new ArrayList<Integer>();
+        for(Seat seat:seatList){
+            seatIDList.add(seat.getSeatNumber());
+        }
+    }
+    public ArrayList<Integer> getSeatIDList(){
+        return  seatIDList;
+    }
 
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
@@ -23,7 +43,8 @@ public class ShowTime implements Printable {
         this.id = id;
     }
 
-    public ShowTime(Movie movie, LocalDateTime startTime) {
+    public ShowTime(int id,Movie movie, LocalDateTime startTime) {
+        this.id=id;
         this.movie = movie;
         this.startTime = startTime;
         seatList = new ArrayList<>(80);

@@ -216,7 +216,7 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="btn_back" layoutX="126.0" layoutY="513.0" mnemonicParsing="false" onMouseClicked="#CheckSeatsAvailability" prefHeight="39.0" prefWidth="88.0" text="Back">
+      <Button fx:id="btn_back" layoutX="126.0" layoutY="513.0" mnemonicParsing="false" onAction="#backToSelectedMovieScene" prefHeight="39.0" prefWidth="88.0" text="Back">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -246,11 +246,15 @@
          </font>
       </Label>
       <Label fx:id="totalpricelabel" alignment="CENTER" layoutX="589.0" layoutY="386.0" opacity="0.5" prefHeight="46.0" prefWidth="96.0" text="Total_price_label" />
-      <Label alignment="CENTER" layoutX="251.0" layoutY="466.0" prefHeight="30.0" prefWidth="127.0" text="Enter Customer ID:">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="idtextfield" alignment="CENTER" layoutX="378.0" layoutY="469.0" promptText="ID" />
+      <HBox fx:id="AdminHbox" disable="true" layoutX="247.0" layoutY="461.0" prefHeight="39.0" prefWidth="301.0" spacing="10.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="127.0" text="Enter Customer ID:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="idtextfield" alignment="CENTER" prefHeight="34.0" prefWidth="149.0" promptText="ID" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

@@ -1,12 +1,16 @@
 package com.example.cinema_reservation_system;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Control;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -15,29 +19,56 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.Serial;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 
-public class SeatsController {
-    public Rectangle seat1;
+public class SeatsController implements Initializable {
+    @FXML
+    private TableColumn<Seat, Double> pricecolumn ;
+    @FXML
+    private TableColumn<Seat, Integer> qtycolumn;
+    @FXML
+    private TableColumn<ArrayList<Seat>, String> seatscolumn;
+
+    @FXML
+    private TableView<Seat> tableview;
+
+    @FXML
+    private TableColumn<Seat, Double> totalpricecolumn;
+
+    @FXML
+    private Label totalpricelabel;
+
+    @FXML
+    private TableColumn<?, ?> typecolumn;
     public HBox AllSeats;
     @FXML
     private Label welcomeText;
     private Stage stage;
     private Scene scene;
     private Parent root;
+    ArrayList<Integer> selectedSeatsID =new ArrayList<>();
+    ArrayList<Seat>selectedSeats=new ArrayList<>();
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        CheckSeatsAvailability();
+
+    }
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    public void backToSelectedMovieScene(ActionEvent event) throws IOException {
+
+        SceneController.launchScene("SelectedMovie.fxml");
     }
 
     @FXML
-    public void CheckSeatsAvailability(MouseEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void CheckSeatsAvailability() {
+        Reservation reservation = Reservation.getInstance();
+        String showtimeSeats = Seat.SeatsConversiontoString(reservation.getShowtime().getSeatList());
+        System.out.println(showtimeSeats);
         for (Node Section : AllSeats.getChildren()){
             if(Section instanceof VBox){
                 VBox CurrentSection = (VBox) Section;
@@ -47,9 +78,10 @@ public class SeatsController {
                         for(Node seat:CurrentRow.getChildren()){
                             if(seat instanceof Rectangle){
                                 Rectangle CurrentSeat = (Rectangle) seat;
-                                if(CurrentSeat.getId().equals("seat1")||CurrentSeat.getId().equals("seat20"))
-                                    CurrentSeat.setFill(Color.RED);
-                                System.out.println(CurrentSeat.getId());
+                                int seatID=Integer.parseInt(CurrentSeat.getId().substring(4));
+                                System.out.println(seatID);
+                                if(showtimeSeats.charAt(seatID-1)=='1')
+                                    CurrentSeat.setFill(Color.GRAY);
                             }
                         }
                     }
@@ -58,9 +90,27 @@ public class SeatsController {
         }
     }
     public void SelectSeat(MouseEvent mouseEvent) throws IOException {
+        Reservation reservation = Reservation.getInstance();
+        ArrayList<Integer> showtimeSeats = reservation.getShowtime().getSeatIDList();
         Rectangle seatPressed = (Rectangle) mouseEvent.getSource();
-        System.out.println(seatPressed.getId());
-       seatPressed.setFill(Color.RED);
+        int seatID=Integer.parseInt(seatPressed.getId().substring(4));
+        //System.out.println(seatPressed.getId());
+        if(showtimeSeats.contains(seatID)){
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("This seat is cannot be reserved");
+            a.show();
+        }
+        else {
+            seatPressed.setFill(Color.RED);
+            if(!selectedSeatsID.contains(seatID)){
+                selectedSeatsID.add(seatID);
+                //Seat seat = new Seat(seatID,isreser)
+            }
+        }
+    }
+    public void AddSeatToCart(Seat seat){
+        tableview.getItems().add(seat);
     }
 
 }
