@@ -12,16 +12,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class MovieController implements Initializable {
+public class SelectMovieController implements Initializable {
     Database db = Database.getInstance();
     @FXML
     HBox hb = new HBox();
@@ -57,7 +53,8 @@ public class MovieController implements Initializable {
                 if (movieID < movies.size()) {
                     int id =movies.get(movieID).getId();
                     String url =movies.get(movieID).getImageurl();
-                    addImage(id,url,j,i);
+                    String description =movies.get(movieID).getDescription();
+                    addImage(id,url,description,j,i);
                     movieID++;
                 }
             }
@@ -65,7 +62,7 @@ public class MovieController implements Initializable {
 
     }
 
-    private void addImage(int id,String imageurl, int colIndex, int rowIndex) {
+    private void addImage(int id,String imageurl, String movieDescription,int colIndex, int rowIndex) {
         image = new Image(imageurl);
         pic = new ImageView();
         pic.setFitWidth(160);
@@ -90,11 +87,11 @@ public class MovieController implements Initializable {
                     int movieId = resultSet.getInt("id");
                     String genre=resultSet.getString("genre").trim();
                     String title=resultSet.getString("title").trim();
-                    //int duration= Integer.parseInt(resultSet.getString("duration").trim().split("")[0]);
-                    int duration= 10;
+                    int duration= Integer.parseInt(resultSet.getString("duration").trim().split("")[0]);
+                    //int duration= 10;
                     String description=resultSet.getString("description").trim();
                     String imageurl=resultSet.getString("imageurl").trim();
-                    Movie movie = new Movie(movieId,title,genre,duration,imageurl);
+                    Movie movie = new Movie(movieId,title,genre,duration,description,imageurl);
                     movies.add(movie);
                     //System.out.println("CellID : " + movieId + " Type : " + type);
                 }

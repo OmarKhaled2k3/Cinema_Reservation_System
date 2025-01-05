@@ -3,8 +3,26 @@ package com.example.cinema_reservation_system;
 public class FoodItem implements Printable{
     private String name;
     private double price;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     private String type;
-    int qty;
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    private int qty;
     public FoodItem(String name, double price) {
         this.name = name;
         this.price = price;

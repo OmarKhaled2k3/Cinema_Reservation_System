@@ -1,5 +1,6 @@
 package com.example.cinema_reservation_system;
 
+import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -20,8 +21,24 @@ public class Customer extends User implements Reservable {
 
     @Override
     public void createReservation() {
-        // Example logic for creating a reservation
-        System.out.println("Creating reservation for customer " + name);
+        Reservation reservation = Reservation.getInstance();
+        int id = reservation.getId();
+        int showtimeID = reservation.getShowtime().getId();
+        int customerID = reservation.getCustomer().getId();
+
+        try {
+            Database db = Database.getInstance();
+            String query;
+            if(reservation.getFoodOrder()!=null)
+            query = String.format("INSERT INTO Reservation (ShowtimeID,customerID,FoodOrderID,seats) VALUES(%d,%d,%d,%s)",  showtimeID,customerID,reservation.getFoodOrder().getId(),reservation.getSeatSelectedString());
+            else query = String.format("INSERT INTO Reservation (ShowtimeID,customerID,seats) VALUES(%d,%d,%s)",  showtimeID,customerID,reservation.getSeatSelectedString());
+            ResultSet resultSet = db.executeQuery(query);
+            resultSet.close();
+
+        } catch (Exception exception) {
+            System.out.println("Error: " + exception);
+        }
+        reservation.reset(++id);
     }
     //ShowTime showTime = new ShowTime(Movie,starttime);
     // Seats
@@ -29,15 +46,36 @@ public class Customer extends User implements Reservable {
     //Reservation reservation = new Reservation(new Customer("sdf","sdf","sdf","sdf") ,showTime,new ArrayList<Seat>());
     @Override
     public void cancelReservation() {
-        // Example logic for canceling a reservation
-        System.out.println("Canceling reservation for customer " + name);
+        Reservation reservation = Reservation.getInstance();
+        int id = reservation.getId();
+
+        try {
+            Database db = Database.getInstance();
+            ResultSet resultSet = db.executeQuery("delete * from reservation where id="+String.valueOf(id));
+            resultSet.close();
+
+        } catch (Exception exception) {
+            System.out.println("Error: " + exception);
+        }
+        reservation.reset(id);
     }
-    public void createFoodOrder(FoodOrder foodOrder){
-        System.out.println("making Food order for customer."+ name);
+    public void modifyReservation() {
+        Reservation reservation = Reservation.getInstance();
+        int reservationId = reservation.getId();
+        int showtimeID = reservation.getShowtime().getId();
+
+        try {
+            Database db = Database.getInstance();
+            String query;
+            query = String.format("UPDATE Reservation SET ShowtimeID = %d, seats=%s where id=%d",  showtimeID,reservation.getSeatSelectedString(),reservationId);
+            ResultSet resultSet = db.executeQuery(query);
+            resultSet.close();
+
+        } catch (Exception exception) {
+            System.out.println("Error: " + exception);
+        }
     }
-    public void cancelFoodOrder(FoodOrder foodOrder){
-        System.out.println("canceling Food order for customer."+ name);
-    }
+
     public void viewReservation() {
         // Example logic for viewing a reservation
         System.out.println("Viewing reservation history for " + name);

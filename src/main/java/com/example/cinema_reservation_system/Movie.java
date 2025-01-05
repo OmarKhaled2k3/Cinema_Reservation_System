@@ -7,14 +7,19 @@ public class Movie implements Printable  {
     private int id;
     private String imageurl;
 
-    public Movie(int id,String title, String genre, int duration, String imageurl) {
+
+    private String description;
+
+    public Movie(int id, String title, String genre, int duration, String description, String imageurl) {
         this.title = title;
         this.genre = genre;
         this.duration = duration;
         this.id = id;
         this.imageurl = imageurl;
+        this.description = description;
     }
 
+    public String getDescription() {return description;}
     public String getTitle() { return title; }
     public String getGenre() { return genre; }
     public int getDuration() { return duration; }

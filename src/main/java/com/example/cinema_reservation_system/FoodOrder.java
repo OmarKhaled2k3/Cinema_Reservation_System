@@ -3,18 +3,31 @@ package com.example.cinema_reservation_system;
 import java.util.ArrayList;
 import java.util.List;
 
-class FoodOrder implements Printable {
+public class FoodOrder implements Printable {
     private ArrayList<FoodItem> foodItems;
     private double totalCost;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public FoodOrder() {
         this.foodItems = new ArrayList<>();
     }
 
-    public void addItem(FoodItem item) {
+    public void addItems(FoodItem item) {
         foodItems.add(item);
     }
+    public void addItems(ArrayList<FoodItem> items) {
+        foodItems.addAll(items);
+    }
 
-    public List<FoodItem> getFoodItems() {
+    public ArrayList<FoodItem> getFoodItems() {
         return foodItems;
     }
 
