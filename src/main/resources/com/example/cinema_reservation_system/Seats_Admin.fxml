@@ -226,7 +226,7 @@
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="btn_save" layoutX="570.0" layoutY="513.0" mnemonicParsing="false" onMouseClicked="#CheckSeatsAvailability" prefHeight="39.0" prefWidth="88.0" text="Save">
+      <Button fx:id="btn_save" layoutX="570.0" layoutY="513.0" mnemonicParsing="false" onMouseClicked="#CheckSeatsAvailability" onAction="#skip" prefHeight="39.0" prefWidth="88.0" text="Save">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

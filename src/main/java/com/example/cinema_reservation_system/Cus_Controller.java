@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
+
 public class Cus_Controller {
 
     @FXML
@@ -33,8 +35,8 @@ public class Cus_Controller {
 
     // Method to handle "Log Out" button action
     @FXML
-    private void handleLogout(ActionEvent event) {
-        System.out.println("Log Out button clicked!");
+    private void handleLogout(ActionEvent event) throws IOException {
+        SceneController.launchScene("login_page.fxml");
         // Add logic for logging out, such as navigating to the login screen
     }
 

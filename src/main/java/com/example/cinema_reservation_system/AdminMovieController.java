@@ -69,7 +69,7 @@ public class AdminMovieController implements Initializable {
             showMovieDetails(movieList.get(0));
         }
     }
-//          jfd
+//
 
     private void populateTableView() {
         movieList = FXCollections.observableArrayList();

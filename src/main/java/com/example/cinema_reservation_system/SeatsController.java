@@ -164,5 +164,8 @@ public class SeatsController implements Initializable {
         column.setCellFactory(TextFieldTableCell.forTableColumn());
         return column;
     }
-
-}
+    //To be removed
+    @FXML
+    private void skip() throws IOException {
+        SceneController.launchScene("Food_CustomerTab.fxml");
+}}

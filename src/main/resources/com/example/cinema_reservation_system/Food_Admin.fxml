@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.Admin_Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminFoodController">
    <children>
       <StackPane layoutX="205.0" layoutY="21.0" prefHeight="56.0" prefWidth="190.0">
          <children>
@@ -67,17 +67,17 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_add" layoutX="284.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Add">
+            <Button fx:id="btn_add" layoutX="284.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" onAction="#addFood" prefWidth="80.0" text="Add">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_remove" layoutX="310.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="87.0" text="Remove">
+            <Button fx:id="btn_remove" layoutX="310.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="87.0" onAction="#removeFood" text="Remove">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_save" layoutX="336.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Save">
+            <Button fx:id="btn_save" layoutX="336.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" onAction="#saveFood" text="Save">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

@@ -41,7 +41,7 @@
       </VBox>
       <StackPane layoutX="14.0" layoutY="334.0" prefHeight="52.0" prefWidth="158.0">
          <children>
-            <Button fx:id="btn_logout" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" text="Log Out">
+            <Button fx:id="btn_logout" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" text="Log Out" onAction="#handleLogout">
                <font>
                   <Font name="System Italic" size="14.0" />
                </font>
