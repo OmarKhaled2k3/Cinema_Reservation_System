@@ -12,11 +12,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.register_controller">
    <children>
-      <StackPane layoutX="203.0" layoutY="14.0" prefHeight="46.0" prefWidth="197.0">
+      <StackPane layoutX="65.0" layoutY="14.0" prefHeight="54.0" prefWidth="474.0">
          <children>
-            <Label fx:id="registerlabel" alignment="CENTER" prefHeight="59.0" prefWidth="152.0" text="Register">
+            <Label fx:id="registerlabel" alignment="CENTER" prefHeight="54.0" prefWidth="342.0" text="Register">
                <font>
-                  <Font size="37.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
          </children>
@@ -64,12 +64,12 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="32.0" layoutY="317.0" prefHeight="69.0" prefWidth="539.0" spacing="150.0">
          <children>
-            <Button fx:id="btn_btl" mnemonicParsing="false" prefHeight="40.0" prefWidth="122.0" onAction="#backToLogin" text="Back To Login">
+            <Button fx:id="btn_btl" mnemonicParsing="false" onAction="#backToLogin" prefHeight="40.0" prefWidth="122.0" text="Back To Login">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_reg" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Register">
+            <Button fx:id="btn_reg" mnemonicParsing="false" onAction="#handleRegister" prefHeight="40.0" prefWidth="80.0" text="Register">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
