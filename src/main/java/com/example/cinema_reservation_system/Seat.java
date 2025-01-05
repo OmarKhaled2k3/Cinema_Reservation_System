@@ -64,6 +64,8 @@ public class Seat implements Printable{
     public int getSeatNumber() { return seatNumber; }
 
     public String getType() {
+        if(seatNumber >=43 && seatNumber <=65) type = "VIP";
+        else type = "Standard";
         return type;
     }
 
