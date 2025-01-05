@@ -77,14 +77,15 @@ public class AdminMovieController implements Initializable {
 
         try (ResultSet resultSet = db.getInstance().executeQuery(query)) {
             while (resultSet.next()) {
-                movieList.add(new Movie(
-                        resultSet.getInt("ID"),
-                        resultSet.getString("title"),
-                        resultSet.getString("genre"),
-                        resultSet.getInt("duration"),
-                        resultSet.getString("imageurl"),
-                        resultSet.getString("description")
-                ));
+                int id = resultSet.getInt("id");
+                String genre = resultSet.getString("genre").trim();
+                String title = resultSet.getString("title").trim();
+                int duration = Integer.parseInt(resultSet.getString("duration").trim().split("")[0]);
+                String description = resultSet.getString("description").trim();
+                String imageurl = resultSet.getString("imageurl").trim();
+
+                // Create a new Movie object and add it to the movieList
+                movieList.add(new Movie(id,genre, title, duration, description, imageurl));
             }
         } catch (SQLException e) {
             showAlert("Error", "Failed to load movies from database.");
@@ -118,10 +119,10 @@ public class AdminMovieController implements Initializable {
         String title = namebox.getText();
         String genre = genrebox.getText();
         String durationStr = durationbox.getText();
-        String url = imageurlbox.getText();
+        String imageurl = imageurlbox.getText();
         String description = textarea.getText();
 
-        if (title.isEmpty() || genre.isEmpty() || durationStr.isEmpty() || url.isEmpty() || description.isEmpty()) {
+        if (title.isEmpty() || genre.isEmpty() || durationStr.isEmpty() || imageurl.isEmpty() || description.isEmpty()) {
             showAlert("Error", "Please fill in all fields.");
             return;
         }
@@ -134,12 +135,12 @@ public class AdminMovieController implements Initializable {
                 stmt.setString(1, title);
                 stmt.setString(2, genre);
                 stmt.setInt(3, duration);
-                stmt.setString(4, url);
+                stmt.setString(4, imageurl);
                 stmt.setString(5, description);
                 stmt.executeUpdate();
             }
 
-            movieList.add(new Movie(0, title, genre, duration, url, description));
+            movieList.add(new Movie('0',title, genre, duration, imageurl, description));
             clearFields();
         } catch (NumberFormatException e) {
             showAlert("Error", "Duration must be a number.");
