@@ -13,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -70,6 +69,13 @@ public class AdminShowtab2Controller implements Initializable {
         }
 
         list_view.setItems(showtimes);
+
+        // Add listener to handle selection
+        list_view.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                populateFields(newValue);
+            }
+        });
     }
 
     private void loadShowtimes(int movieId) {
@@ -88,7 +94,7 @@ public class AdminShowtab2Controller implements Initializable {
             while (rs.next()) {
                 showtimes.add(rs.getString("time"));
             }
-            rs.close();
+            rs .close();
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error loading showtimes", e);
         }
@@ -108,7 +114,6 @@ public class AdminShowtab2Controller implements Initializable {
 
                 LocalTime parsedTime = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm:ss"));
                 String datetime = date + " " + parsedTime;
-
 
                 if (showtimes.contains(datetime)) {
                     showAlert("Showtime already exists.", Alert.AlertType.ERROR);
@@ -144,13 +149,26 @@ public class AdminShowtab2Controller implements Initializable {
     private void Savebtn(ActionEvent event) {
         LocalDate date = datepicker.getValue();
         String time = time_field.getText();
+        String selectedItem = list_view.getSelectionModel().getSelectedItem();
 
+        if (selectedItem != null && date != null && !time.isEmpty()) {
+            try {
+                LocalTime parsedTime = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm:ss"));
+                String datetime = date + " " + parsedTime;
 
-        LocalTime parsedTime = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm:ss"));
-        String datetime = date + " " + parsedTime;
-        saveToDatabase(datetime);
-       showAlert("saved successfully.", Alert.AlertType.INFORMATION);
+                // Update the showtime in the database
+                updateShowtimeInDatabase(selectedItem, datetime);
+                showtimes.remove(selectedItem);
+                showtimes.add(datetime);
+                showAlert("Showtime updated successfully.", Alert.AlertType.INFORMATION);
+            } catch (Exception e) {
+                showAlert("Invalid time format. Use HH:mm:ss.", Alert.AlertType.ERROR);
+            }
+        } else {
+            showAlert("Please select a showtime and enter both date and time.", Alert.AlertType.ERROR);
+        }
     }
+
     private void saveToDatabase(String datetime) {
         try {
             Database db = Database.getInstance();
@@ -184,6 +202,43 @@ public class AdminShowtab2Controller implements Initializable {
             stmt.executeUpdate();
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error deleting showtime", e);
+        }
+    }
+
+    private void updateShowtimeInDatabase(String oldDatetime, String newDatetime) {
+        try {
+            Database db = Database.getInstance();
+            if (db == null) {
+                showAlert("Database connection error.", Alert.AlertType.ERROR);
+                return;
+            }
+
+            String query = "UPDATE showtime SET time = ? WHERE time = ? AND MovieID = ?";
+            PreparedStatement stmt = db.getConnection().prepareStatement(query);
+            stmt.setString(1, newDatetime);
+            stmt.setString(2, oldDatetime);
+            stmt.setInt(3, movieId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error updating showtime", e);
+        }
+    }
+
+    private void populateFields(String showtime) {
+        String[] parts = showtime.split(" ");
+        if (parts.length == 2) {
+            LocalDate date = LocalDate.parse(parts[0]);
+            String timeString = parts[1];
+
+            // Ensure the time string is in HH:mm:ss format
+            if (timeString.length() == 5) { // Format is HH:mm
+                timeString += ":00"; // Append seconds
+            }
+
+            LocalTime time = LocalTime.parse(timeString, DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+            datepicker.setValue(date);
+            time_field.setText(time.toString());
         }
     }
 
