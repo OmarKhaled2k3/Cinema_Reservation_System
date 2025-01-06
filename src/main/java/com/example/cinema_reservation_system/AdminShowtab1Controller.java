@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class AdminShowtab1Controller implements Initializable {
 
     @FXML
-    private ComboBox<String> box_movies;
+    private ComboBox<Movie> box_movies;
 
     @FXML
     private Button btn_back;
@@ -25,31 +25,44 @@ public class AdminShowtab1Controller implements Initializable {
     @FXML
     private Button btn_continue;
 
+    private static Movie selectedMovie;
+
+    public static void setSelectedMovie(Movie movie) {
+        selectedMovie = movie;
+    }
+
+    public static Movie getSelectedMovie() {
+        return selectedMovie;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Populate the ComboBox with movies from the database
         box_movies.setItems(FXCollections.observableArrayList(fetchMovies()));
 
-        // Disable continue button initially
         btn_continue.setDisable(true);
 
-        // Enable continue button when a movie is selected
         box_movies.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             btn_continue.setDisable(newValue == null);
         });
     }
 
-    // Fetch movie names from the database
-    private ArrayList<String> fetchMovies() {
-        ArrayList<String> movies = new ArrayList<>();
+    private ArrayList<Movie> fetchMovies() {
+        ArrayList<Movie> movies = new ArrayList<>();
         try {
             Database db = Database.getInstance();
-            String query = "SELECT title FROM movies";
+            String query = "SELECT * FROM movies";
             PreparedStatement stmt = db.getConnection().prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                movies.add(rs.getString("title"));
+                movies.add(new Movie(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("genre"),
+                        rs.getInt("duration"),
+                        rs.getString("description"),
+                        rs.getString("imageurl")
+                ));
             }
             rs.close();
         } catch (SQLException e) {
@@ -65,6 +78,7 @@ public class AdminShowtab1Controller implements Initializable {
 
     @FXML
     private void gotomanage2() throws IOException {
+        setSelectedMovie(box_movies.getSelectionModel().getSelectedItem());
         SceneController.launchScene("Admin_Showtimetab2.fxml");
     }
 }

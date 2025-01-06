@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.HelloController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminShowtab2Controller">
    <children>
       <ListView fx:id="list_view" layoutX="286.0" layoutY="77.0" prefHeight="200.0" prefWidth="306.0" />
       <StackPane layoutX="205.0" layoutY="6.0" prefHeight="66.0" prefWidth="190.0">
@@ -39,28 +39,28 @@
       </VBox>
       <VBox alignment="CENTER" layoutX="114.0" layoutY="77.0" prefHeight="222.0" prefWidth="144.0" spacing="15.0">
          <children>
-            <DatePicker />
+            <DatePicker fx:id="datepicker" />
             <TextField fx:id="time_field" />
          </children>
       </VBox>
       <HBox alignment="CENTER" layoutY="299.0" prefHeight="101.0" prefWidth="600.0" spacing="80.0">
          <children>
-            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Back" onAction="#goBack1">
+            <Button fx:id="btn_back" mnemonicParsing="false" onAction="#goBack1" prefHeight="40.0" prefWidth="80.0" text="Back">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_add" layoutX="284.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Add">
+            <Button fx:id="btn_add" layoutX="284.0" layoutY="48.0"  mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Add" onAction="#addShowtime">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_remove" layoutX="310.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="87.0" text="Remove">
+            <Button fx:id="btn_remove" layoutX="310.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="87.0" text="Remove" onAction="#removeShowtime">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_save" layoutX="336.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Save">
+            <Button fx:id="btn_save" layoutX="336.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Save" onAction="#saveShowtimeToDB">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
