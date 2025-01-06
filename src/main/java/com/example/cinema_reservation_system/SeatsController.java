@@ -1,6 +1,5 @@
 package com.example.cinema_reservation_system;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -30,24 +28,109 @@ import java.util.ResourceBundle;
 
 
 public class SeatsController implements Initializable {
+
+    public static class SeatDataObject {
+        private String vipSeats="",standardSeats="";
+        private Double standardPrice=0d,vipPrice=0d;
+        private Integer standardQty=0,vipQty=0;
+        private Double totalPrice=0d;
+        private String type;
+
+        public String getVipSeats() {
+            return vipSeats;
+        }
+
+        public void setVipSeats(String vipSeats) {
+            this.vipSeats = vipSeats;
+        }
+
+        public String getStandardSeats() {
+            return standardSeats;
+        }
+
+        public void setStandardSeats(String standardSeats) {
+            this.standardSeats = standardSeats;
+        }
+
+        public Double getStandardPrice() {
+            return standardPrice;
+        }
+
+        public void setStandardPrice(Double standardPrice) {
+            this.standardPrice = standardPrice;
+        }
+
+        public Double getVipPrice() {
+            return vipPrice;
+        }
+
+        public void setVipPrice(Double vipPrice) {
+            this.vipPrice = vipPrice;
+        }
+
+        public Integer getStandardQty() {
+            return standardQty;
+        }
+
+        public void setStandardQty(Integer standardQty) {
+            this.standardQty = standardQty;
+        }
+
+        public Integer getVipQty() {
+            return vipQty;
+        }
+
+        public void setVipQty(Integer vipQty) {
+            this.vipQty = vipQty;
+        }
+
+        public Double getTotalPrice() {
+            return totalPrice;
+        }
+
+        public void setTotalPrice(Double totalPrice) {
+            this.totalPrice = totalPrice;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        SeatDataObject(String vipSeats, String standardSeats, Double standardPrice, Double vipPrice, Integer standardQty, Integer vipQty, Double totalPrice, String type) {
+            this.vipSeats = vipSeats;
+            this.standardSeats = standardSeats;
+            this.standardPrice = standardPrice;
+            this.vipPrice = vipPrice;
+            this.standardQty = standardQty;
+            this.vipQty = vipQty;
+            this.totalPrice = totalPrice;
+            this.type=type;
+        }
+
+    }
     @FXML
-    private TableColumn<ObservableList<String>, String> pricecolumn ;
-    @FXML
-    private TableColumn<ObservableList<String>, String> qtycolumn;
-    @FXML
-    private TableColumn<ObservableList<String>, String> seatscolumn;
+    private TableColumn<SeatDataObject, Double> pricecolumn  ;
 
     @FXML
-    private TableView<ObservableList<String>> tableview ;
+    private TableColumn<SeatDataObject, Integer> qtycolumn ;
+    @FXML
+    private TableColumn<SeatDataObject, String> seatscolumn ;
 
     @FXML
-    private TableColumn<ObservableList<String>, String> totalpricecolumn;
+    private TableView<SeatDataObject> tableview  ;
+
+    @FXML
+    private TableColumn<SeatDataObject,Double> totalpricecolumn ;
 
     @FXML
     private Label totalpricelabel;
 
     @FXML
-    private TableColumn<ObservableList<String>, String> typecolumn;
+    private TableColumn<SeatDataObject, String> typecolumn;
     public HBox AllSeats;
     @FXML
     private Label welcomeText;
@@ -59,17 +142,12 @@ public class SeatsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tableview = new TableView<>();
-
-        seatscolumn = createColumn("Seat Number", 0);
-        typecolumn = createColumn("Type", 1);
-         qtycolumn = createColumn("Quantity", 2);
-        pricecolumn = createColumn("Price", 3);
-        totalpricecolumn = createColumn("Total Price", 4);
-        tableview.getColumns().addAll(seatscolumn, typecolumn, pricecolumn,qtycolumn, totalpricecolumn);
-
+        pricecolumn.setCellValueFactory(new PropertyValueFactory<>("standardPrice"));
+        qtycolumn.setCellValueFactory(new PropertyValueFactory<>("standardQty"));
+        seatscolumn.setCellValueFactory(new PropertyValueFactory<>("standardSeats"));
+        totalpricecolumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+        typecolumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         CheckSeatsAvailability();
-
     }
     @FXML
     public void backToSelectedMovieScene(ActionEvent event) throws IOException {
@@ -132,11 +210,11 @@ public class SeatsController implements Initializable {
         }
     }
     public void UpdateCart(){
-        //tableview.getItems().add(seat);
-        ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
+        ObservableList<ObservableList<SeatDataObject>> data = FXCollections.observableArrayList();
         String vipSeats="",standardSeats="";
         Double standardPrice=0d,vipPrice=0d;
         int standardQty=0,vipQty=0;
+        String type="Standard";
         for(Seat sid :selectedSeats){
             if(sid.getType().equals("Standard")){
                 standardSeats+=sid.getSeatNumber() +" ,";
@@ -149,20 +227,22 @@ public class SeatsController implements Initializable {
                 vipQty++;
             }
         }
+        SeatDataObject seatDataObject = new SeatDataObject(vipSeats,standardSeats,100d,vipPrice,standardQty,vipQty,standardPrice,type);
+        //data.add((ObservableList<SeatDataObject>) seatDataObject);
         // Add rows of raw data
-        if(standardQty>0)data.add(FXCollections.observableArrayList(standardSeats, "Standard", "100", String.valueOf(standardQty), String.valueOf(standardPrice)));
-        if(vipQty>0)data.add(FXCollections.observableArrayList(vipSeats, "VIP", "120", String.valueOf(vipQty), String.valueOf(vipPrice)));
-        tableview.setItems(data);
+        tableview.getItems().clear();
 
-    }
-    private TableColumn<ObservableList<String>, String> createColumn(String title, int index) {
-        TableColumn<ObservableList<String>, String> column = new TableColumn<>(title);
-        column.setCellValueFactory(cellData -> {
-            ObservableList<String> row = cellData.getValue();
-            return new SimpleStringProperty(row.get(index));
-        });
-        column.setCellFactory(TextFieldTableCell.forTableColumn());
-        return column;
+        //if(standardQty>0){
+
+        //}
+        //if(vipQty>0)data.add(FXCollections.observableArrayList(vipSeats, "VIP", "120", String.valueOf(vipQty), String.valueOf(vipPrice)));
+
+        if(!tableview.getItems().isEmpty())
+        tableview.getItems().set(0,seatDataObject);
+        else
+            tableview.getItems().add(seatDataObject);
+        //tableview.setItems(data);
+        tableview.refresh();
     }
     //To be removed
     @FXML

@@ -226,26 +226,26 @@
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="btn_save" layoutX="570.0" layoutY="513.0" mnemonicParsing="false" onMouseClicked="#CheckSeatsAvailability" onAction="#skip" prefHeight="39.0" prefWidth="88.0" text="Save">
+      <Button fx:id="btn_save" layoutX="570.0" layoutY="513.0" mnemonicParsing="false" onAction="#skip" onMouseClicked="#CheckSeatsAvailability" prefHeight="39.0" prefWidth="88.0" text="Save">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="tableview" layoutX="29.0" layoutY="374.0" prefHeight="70.0" prefWidth="363.0">
+      <TableView fx:id="tableview" layoutX="29.0" layoutY="357.0" prefHeight="87.0" prefWidth="522.0">
         <columns>
-          <TableColumn fx:id="seatscolumn" prefWidth="75.0" text="Seats" />
-          <TableColumn fx:id="typecolumn" prefWidth="75.0" text="Type" />
-            <TableColumn fx:id="pricecolumn" prefWidth="75.0" text="Price" />
-            <TableColumn fx:id="qtycolumn" prefWidth="45.0" text="Qty" />
-            <TableColumn fx:id="totalpricecolumn" prefWidth="92.0" text="Total Price" />
+          <TableColumn fx:id="seatscolumn" prefWidth="213.0" text="Seats" />
+          <TableColumn fx:id="typecolumn" minWidth="0.0" prefWidth="65.0" text="Type" />
+            <TableColumn fx:id="pricecolumn" minWidth="6.0" prefWidth="67.0" text="Price" />
+            <TableColumn fx:id="qtycolumn" prefWidth="77.0" text="Qty" />
+            <TableColumn fx:id="totalpricecolumn" prefWidth="99.0" text="Total" />
         </columns>
       </TableView>
-      <Label alignment="CENTER" layoutX="487.0" layoutY="386.0" prefHeight="46.0" prefWidth="88.0" text="Total Price:">
+      <Label alignment="CENTER" layoutX="559.0" layoutY="387.0" prefHeight="46.0" prefWidth="88.0" text="Total Price:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="totalpricelabel" alignment="CENTER" layoutX="589.0" layoutY="386.0" opacity="0.5" prefHeight="46.0" prefWidth="96.0" text="Total_price_label" />
+      <Label fx:id="totalpricelabel" alignment="CENTER" layoutX="661.0" layoutY="387.0" opacity="0.5" prefHeight="46.0" prefWidth="96.0" text="Total_price_label" />
       <HBox fx:id="AdminHbox" disable="true" layoutX="247.0" layoutY="461.0" prefHeight="39.0" prefWidth="301.0" spacing="10.0">
          <children>
             <Label alignment="CENTER" prefHeight="30.0" prefWidth="127.0" text="Enter Customer ID:">
