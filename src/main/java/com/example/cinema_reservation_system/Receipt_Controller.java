@@ -29,7 +29,10 @@ public class Receipt_Controller {
         generateReceipt();
         list_view.setItems(listViewItems);
         updateTotalPriceLabel();
-        reservation.getCustomer().createReservation();
+        if(reservation.getCustomer()!=null){
+            if(reservation.getCustomer().isModify()) reservation.getCustomer().modifyReservation();
+            else reservation.getCustomer().createReservation();
+        }
     }
 
     private void generateReceipt() {

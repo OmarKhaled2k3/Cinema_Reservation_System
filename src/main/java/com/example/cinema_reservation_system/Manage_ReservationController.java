@@ -217,12 +217,15 @@ public class Manage_ReservationController {
     }
     @FXML
     private void handleModifyButton(ActionEvent event) throws IOException {
-        Reservation reservation = Reservation.getInstance();
         int index=reservation_table.getSelectionModel().getSelectedIndex();
+        if(index!=-1){
+        Reservation reservation = Reservation.getInstance();
         reservation.setShowtime(showTimesReserved.get(index));
         reservation.addSeatSelected(seatsReservedbyIndex.get(index));
         reservation.addFoodOrder(FoodItemsList.get(index));
         SceneController.launchScene("Seats_Admin.fxml");
+        }
+
     }
     @FXML
     private void goBack() throws Exception{

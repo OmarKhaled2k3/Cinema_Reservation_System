@@ -99,8 +99,11 @@ public class SeatsController implements Initializable {
     }
     @FXML
     public void backToSelectedMovieScene(ActionEvent event) throws IOException {
-
-        SceneController.launchScene("SelectedMovie.fxml");
+        Reservation reservation = Reservation.getInstance();
+        if(reservation.getCustomer()!=null){
+            if(reservation.getCustomer().isModify()) SceneController.launchScene("Customer_ManageReservationTab.fxml");
+            else SceneController.launchScene("SelectedMovie.fxml");
+        }
     }
 
     @FXML

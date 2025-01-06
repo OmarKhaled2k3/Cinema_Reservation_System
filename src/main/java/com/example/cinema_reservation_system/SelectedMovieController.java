@@ -100,6 +100,7 @@ public class SelectedMovieController implements Initializable {
     private ArrayList<ShowTime> retrieveShowtimes(Movie movie){
         ArrayList<ShowTime> showTimes =new ArrayList<>();
         Reservation reservation = Reservation.getInstance();
+        reservation.getCustomer().setModify(false);
         int movieId = reservation.getMovieId();
         try {
             Database db = Database.getInstance();

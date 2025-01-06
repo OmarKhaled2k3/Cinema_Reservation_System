@@ -24,12 +24,16 @@ public class Cus_Controller {
     // Method to handle "New Reservation" button action
     @FXML
     private void handleNewReservation (ActionEvent event) throws Exception {
-       SceneController.launchScene("SelectMovie.fxml");
+        Reservation reservation = Reservation.getInstance();
+        reservation.getCustomer().setModify(false);
+        SceneController.launchScene("SelectMovie.fxml");
     }
 
     // Method to handle "Manage Reservations" button action
     @FXML
     private void handleManageReservations(ActionEvent event) throws Exception {
+        Reservation reservation = Reservation.getInstance();
+        reservation.getCustomer().setModify(true);
         SceneController.launchScene("Customer_ManageReservationTab.fxml");
     }
 

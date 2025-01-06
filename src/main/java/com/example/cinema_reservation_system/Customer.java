@@ -6,6 +6,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Customer extends User implements Reservable {
+    private boolean Modify = false;
+
+    public boolean isModify() {
+        return Modify;
+    }
+
+    public void setModify(boolean modify) {
+        Modify = modify;
+    }
+
     public Customer(String name, String email, String username, String password) {
         super(name, email,username,password);
 
@@ -111,7 +121,6 @@ public class Customer extends User implements Reservable {
         Reservation reservation = Reservation.getInstance();
         int reservationId = reservation.getId();
         int showtimeID = reservation.getShowtime().getId();
-
         try {
             Database db = Database.getInstance();
             String query;
