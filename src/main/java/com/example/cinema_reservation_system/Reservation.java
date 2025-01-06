@@ -149,7 +149,6 @@ public class Reservation implements Printable {
 
     // Reset all fields
     public void reset(int id) {
-        this.customer = null;
         this.movieId = 0;
         this.showtime = null;
         this.foodOrder=null;

@@ -33,20 +33,6 @@ public class Seat implements Printable{
         }
         return seatsReserved;
     }
-    public static ArrayList<Seat> AllSeatsConversion(String seatsString){
-        ArrayList<Seat> Allseats = new ArrayList<>();
-        for(int i=0;i<79;i++){
-            if(seatsString.charAt(i) == '1'){
-                Seat seat = new Seat(i+1,true);
-                Allseats.add(seat);
-            }
-            else{
-                Seat seat = new Seat(i+1);
-                Allseats.add(seat);
-            }
-        }
-        return Allseats;
-    }
     public static String SeatsConversiontoString(ArrayList<Seat> seatsReserved){
         StringBuilder seatsString = new StringBuilder("00000000000000000000000000000000000000000000000000000000000000000000000000000000");
         for(Seat i:seatsReserved){

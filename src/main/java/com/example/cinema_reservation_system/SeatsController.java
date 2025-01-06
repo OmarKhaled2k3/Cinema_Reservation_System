@@ -106,6 +106,10 @@ public class SeatsController implements Initializable {
     @FXML
     public void CheckSeatsAvailability() {
         Reservation reservation = Reservation.getInstance();
+        if(reservation.getSeatSelected() != null &&!reservation.getSeatSelected().isEmpty()){
+            selectedSeats = reservation.getSeatSelected();
+            UpdateCart();
+        }
         String showtimeSeats = Seat.SeatsConversiontoString(reservation.getShowtime().getSeatList());
         System.out.println(showtimeSeats);
         for (Node Section : AllSeats.getChildren()){
@@ -119,8 +123,8 @@ public class SeatsController implements Initializable {
                                 Rectangle CurrentSeat = (Rectangle) seat;
                                 int seatID=Integer.parseInt(CurrentSeat.getId().substring(4));
                                 System.out.println(seatID);
-                                if(showtimeSeats.charAt(seatID-1)=='1')
-                                    CurrentSeat.setFill(Color.GRAY);
+                                if(reservation.getSeatSelected() != null &&!reservation.getSeatSelected().isEmpty() && reservation.getSeatSelectedString().charAt(seatID-1)=='1')CurrentSeat.setFill(Color.RED);
+                                else if(showtimeSeats.charAt(seatID-1)=='1') CurrentSeat.setFill(Color.GRAY);
                             }
                         }
                     }

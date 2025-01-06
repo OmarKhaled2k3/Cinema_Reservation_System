@@ -178,7 +178,7 @@ public class CustomerFoodController implements Initializable {
 
     @FXML
     private void handleBackButtonClick() throws IOException {
-        SceneController.launchScene("Customer_View.fxml");
+        SceneController.launchScene("Seats_Admin.fxml");
     }
 
     @FXML
