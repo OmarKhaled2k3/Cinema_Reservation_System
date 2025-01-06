@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="454.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.HelloController">
+<AnchorPane prefHeight="454.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.Receipt_Controller">
    <children>
       <StackPane layoutX="14.0" layoutY="14.0" prefHeight="52.0" prefWidth="571.0">
          <children>
@@ -19,19 +19,14 @@
          </children>
       </StackPane>
       <ListView fx:id="list_view" layoutX="14.0" layoutY="66.0" prefHeight="242.0" prefWidth="571.0" />
-      <Label alignment="CENTER" layoutX="234.0" layoutY="308.0" prefHeight="31.0" prefWidth="66.0" text="Total:" underline="true">
+      <Label fx:id="total_price_label" alignment="CENTER" layoutX="202.0" layoutY="308.0" prefHeight="31.0" prefWidth="196.0" text="Total: $100">
          <font>
             <Font name="Bodoni MT Bold Italic" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="total_price_label" alignment="CENTER" layoutX="301.0" layoutY="308.0" opacity="0.51" prefHeight="31.0" prefWidth="135.0" text="total_Price">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
       <StackPane layoutY="350.0" prefHeight="80.0" prefWidth="602.0">
          <children>
-            <Button fx:id="btn_confirm" mnemonicParsing="false" prefHeight="43.0" prefWidth="127.0" text="Confirm">
+            <Button fx:id="btn_confirm" mnemonicParsing="false" onAction="#confirm" prefHeight="43.0" prefWidth="127.0" text="Confirm">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

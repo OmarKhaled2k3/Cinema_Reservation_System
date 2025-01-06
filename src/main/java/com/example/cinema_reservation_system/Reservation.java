@@ -111,7 +111,23 @@ public class Reservation implements Printable {
 
     // Methods to manage seatSelected
     public ArrayList<Seat> getSeatSelected() {
-        return seats; // Return a copy to prevent modification
+        return seats;
+    }
+    public ArrayList<Seat> getStandardSeatsSelected() {
+        ArrayList<Seat> standardSeats= new ArrayList<>();
+        for(Seat seat : this.seats){
+            if(!seat.isVIP())
+                standardSeats.add(seat);
+        }
+        return standardSeats;
+    }
+    public ArrayList<Seat> getVIPSeatsSelected() {
+        ArrayList<Seat> vipSeats= new ArrayList<>();
+        for(Seat seat : this.seats){
+            if(seat.isVIP())
+                vipSeats.add(seat);
+        }
+        return vipSeats;
     }
     public String getSeatSelectedString() {
         return Seat.SeatsConversiontoString(seats);

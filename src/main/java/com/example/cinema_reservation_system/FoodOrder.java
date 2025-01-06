@@ -1,7 +1,8 @@
 package com.example.cinema_reservation_system;
 
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class FoodOrder implements Printable {
     private ArrayList<FoodItem> foodItems;
@@ -19,6 +20,10 @@ public class FoodOrder implements Printable {
     public FoodOrder() {
         this.foodItems = new ArrayList<>();
     }
+    public FoodOrder(ObservableList<FoodItem> foodItems) {
+        this.foodItems = new ArrayList<>();
+        this.foodItems.addAll(foodItems);
+    }
 
     public void addItems(FoodItem item) {
         foodItems.add(item);
@@ -30,7 +35,22 @@ public class FoodOrder implements Printable {
     public ArrayList<FoodItem> getFoodItems() {
         return foodItems;
     }
-
+    public String FoodItemsToString(){
+        StringBuilder foodItemsString = new StringBuilder("000000000");
+        int index=0;
+        for(FoodItem food:foodItems){
+            foodItemsString.setCharAt(index++, String.valueOf(food.getId()).charAt(0) );
+        }
+        return foodItemsString.toString();
+    }
+    public String FoodQtyToString(){
+        StringBuilder foodQtyString = new StringBuilder("000000000");
+        int index=0;
+        for(FoodItem food:foodItems){
+            foodQtyString.setCharAt(index++, String.valueOf(food.getQty()).charAt(0));
+        }
+        return foodQtyString.toString();
+    }
     public double getTotalCost() {
         totalCost=0;
         for(FoodItem foodItem : foodItems){

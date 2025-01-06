@@ -51,12 +51,12 @@ public class ShowTime implements Printable {
     }
     public void reserveShowTimeSeats(ArrayList<Seat>seats){
        for(Seat seat : seats){
-           seatList.get(seat.getSeatNumber()).setReserved(true);
+           seatList.get(seat.getSeatNumber()-1).setReserved(true);
         }
     }
     public void cancelShowTimeSeats(ArrayList<Seat>seats){
         for(Seat seat : seats){
-            seatList.get(seat.getSeatNumber()).setReserved(false);
+            seatList.get(seat.getSeatNumber()-1).setReserved(false);
         }
     }
     public Movie getMovie() { return movie; }

@@ -1,7 +1,7 @@
 package com.example.cinema_reservation_system;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Customer extends User implements Reservable {
@@ -29,15 +29,41 @@ public class Customer extends User implements Reservable {
         int id = reservation.getId();
         int showtimeID = reservation.getShowtime().getId();
         int customerID = reservation.getCustomer().getId();
-
+        String reservationQuery="";
+        ResultSet resultSet;
         try {
             Database db = Database.getInstance();
-            String query;
-            if(reservation.getFoodOrder()!=null)
-            query = String.format("INSERT INTO Reservation (ShowtimeID,customerID,FoodOrderID,seats) VALUES(%d,%d,%d,%s)",  showtimeID,customerID,reservation.getFoodOrder().getId(),reservation.getSeatSelectedString());
-            else query = String.format("INSERT INTO Reservation (ShowtimeID,customerID,seats) VALUES(%d,%d,%s)",  showtimeID,customerID,reservation.getSeatSelectedString());
-            ResultSet resultSet = db.executeQuery(query);
-            resultSet.close();
+            ArrayList<String> query = new ArrayList<>();
+            if(reservation.getFoodOrder()!=null) {
+                int foodOrderID =0;
+                String foodOrderIDQuery = "Select MAX(ID) from foodorder ";
+                resultSet = db.executeQuery(foodOrderIDQuery);
+                if(resultSet!=null){
+                    if(resultSet.next()){
+                        foodOrderID = resultSet.getInt("MAX(ID)");
+                    }
+                resultSet.close();
+                }
+                foodOrderID++;
+                String foodQuery = String.format("INSERT INTO foodorder (id,food,quantity) VALUES(%d,%s,%s)", foodOrderID,reservation.getFoodOrder().FoodItemsToString(), reservation.getFoodOrder().FoodQtyToString());
+                reservationQuery = String.format("INSERT INTO Reservation (ShowtimeID,customerID,FoodOrderID,seats) VALUES(%d,%d,%d,%s)", showtimeID, customerID, foodOrderID , reservation.getSeatSelectedString());
+                query.add(foodQuery);
+
+            }
+            else {
+                reservationQuery = String.format("INSERT INTO Reservation (ShowtimeID,customerID,seats) VALUES(%d,%d,%s)",  showtimeID,customerID,reservation.getSeatSelectedString());
+            }
+            query.add(reservationQuery);
+            reservation.getShowtime().getSeatList().addAll(reservation.getSeatSelected());
+            ArrayList<Seat> showtimeReservedSeats=reservation.getShowtime().getSeatList();
+            String showtimeSeats = Seat.SeatsConversiontoString(showtimeReservedSeats);
+            String showtimeQuery = String.format("UPDATE showtime SET seats=%s where id=%d", showtimeSeats,showtimeID);
+            query.add(showtimeQuery);
+            for(String singleQuery:query){
+                try (PreparedStatement stmt = Database.getInstance().getConnection().prepareStatement(singleQuery)) {
+                    stmt.executeUpdate();
+                }
+            }
 
         } catch (Exception exception) {
             System.out.println("Error: " + exception);

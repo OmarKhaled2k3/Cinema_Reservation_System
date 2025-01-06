@@ -185,6 +185,11 @@ public class CustomerFoodController implements Initializable {
     private void handleCheckoutButtonClick() throws IOException {
         // Pass the selected items and total price to the next scene (Receipt_Tab.fxml)
         // You can use SceneController to pass data to the next scene
+        Reservation reservation = Reservation.getInstance();
+        if(!selectedItems.isEmpty()){
+        FoodOrder foodOrder = new FoodOrder(selectedItems);
+        reservation.addFoodOrder(foodOrder);
+        }
         SceneController.launchScene("Receipt_Tab.fxml");
     }
 }

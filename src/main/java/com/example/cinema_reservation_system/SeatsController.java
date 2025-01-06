@@ -200,6 +200,14 @@ public class SeatsController implements Initializable {
     @FXML
     private void next() throws IOException {
         Reservation reservation = Reservation.getInstance();
+        if(!selectedSeats.isEmpty()){
         reservation.addSeatSelected(selectedSeats);
         SceneController.launchScene("Food_CustomerTab.fxml");
+        }
+        else{
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("Please Select A Seat");
+            a.show();
+        }
 }}

@@ -59,7 +59,6 @@ public class Seat implements Printable{
     public void setReserved(boolean reserved) {
         isReserved = reserved;
     }
-
     public double getSeatPrice(int seatNumber){
         String type;
         if(seatNumber >=43 && seatNumber <=65) type = "VIP";
@@ -68,12 +67,19 @@ public class Seat implements Printable{
         if(type == "Standard") return basePrice;
         else return basePrice+VIP;
     }
+    public double getSeatPrice(){
+        if(!isVIP()) return basePrice;
+        else return basePrice+VIP;
+    }
     public int getSeatNumber() { return seatNumber; }
 
     public String getType() {
         if(seatNumber >=43 && seatNumber <=65) type = "VIP";
         else type = "Standard";
         return type;
+    }
+    public boolean isVIP(){
+        return type.equals("VIP");
     }
     public static String getType(int seatNumber) {
         if(seatNumber >=43 && seatNumber <=65) return  "VIP";
