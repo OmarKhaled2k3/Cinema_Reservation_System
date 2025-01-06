@@ -16,6 +16,13 @@ public class Seat implements Printable{
         this.seatNumber = seatNumber;
         this.isReserved = isReserved;
     }
+    public static Seat getSeatbyID(ArrayList<Seat> seats,int id){
+        for(Seat seat : seats){
+            if(seat.seatNumber == id)
+                return seat;
+        }
+        return null;
+    }
     public static ArrayList<Seat> SeatsConversion(String seatsString){
         ArrayList<Seat> seatsReserved= new ArrayList<>();
         for(int i=0;i<79;i++){
@@ -67,6 +74,10 @@ public class Seat implements Printable{
         if(seatNumber >=43 && seatNumber <=65) type = "VIP";
         else type = "Standard";
         return type;
+    }
+    public static String getType(int seatNumber) {
+        if(seatNumber >=43 && seatNumber <=65) return  "VIP";
+        return "Standard";
     }
 
     public void printDetails() {

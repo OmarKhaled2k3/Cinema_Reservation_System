@@ -34,6 +34,10 @@ abstract class User implements Printable {
         this.name = name;
         this.email = email;
     }
+    public User(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
 
     public String getName() {
         return name;
