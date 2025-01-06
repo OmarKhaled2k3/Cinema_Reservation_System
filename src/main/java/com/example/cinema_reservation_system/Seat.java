@@ -28,7 +28,7 @@ public class Seat implements Printable{
     }
     public static ArrayList<Seat> SeatsConversion(String seatsString){
         ArrayList<Seat> seatsReserved= new ArrayList<>();
-        for(int i=0;i<79;i++){
+        for(int i=0;i<80;i++){
             if(seatsString.charAt(i) == '1'){
                 Seat seat = new Seat(i+1,true);
                 seatsReserved.add(seat);
@@ -44,6 +44,8 @@ public class Seat implements Printable{
         return seatsString.toString();
     }
     private static void SortSeatsSelectedbyType(ArrayList<Seat>seats) {
+        standardSeats.clear();
+        vipSeats.clear();
         for(Seat seat : seats){
             if(!seat.isVIP(seat))
                 standardSeats.add(seat);

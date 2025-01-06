@@ -17,6 +17,7 @@ public class Manage_ReservationController {
     private static ArrayList<ShowTime> showTimesReserved = new ArrayList<>();
     private static ArrayList<ArrayList<Seat>> seatsReservedbyIndex = new ArrayList<ArrayList<Seat>>();
     private static ArrayList<ArrayList<FoodItem>> FoodItemsList = new ArrayList<ArrayList<FoodItem>>();
+    private static ArrayList<Integer> reservationIDs = new ArrayList<Integer>();
     @FXML
     private Button btn_back;
 
@@ -125,6 +126,7 @@ public class Manage_ReservationController {
 
     @FXML
     private void initialize(){
+        reservation_table.getItems().clear();
         fooditem_subcolumn.setCellValueFactory(new PropertyValueFactory<>("fooditems"));
         foodprice_subcolumn.setCellValueFactory(new PropertyValueFactory<>("foodPrice"));
         foodqty_subcolumn.setCellValueFactory(new PropertyValueFactory<>("foodqty"));
@@ -169,6 +171,7 @@ public class Manage_ReservationController {
             showTimesReserved.clear();
             seatsReservedbyIndex.clear();
             FoodItemsList.clear();
+            reservationIDs.clear();
             // Burger x5 - 20$ \n Pizza x3 - 10$
         if (resultSet != null) {
             while (resultSet.next()) {
@@ -206,6 +209,7 @@ public class Manage_ReservationController {
                 showTime.setSeatList(showTimeSeatsList);
                 showTimesReserved.add(showTime);
                 seatsReservedbyIndex.add(seatsReserved);
+                reservationIDs.add(reservationID);
             }
             resultSet.close();
         }
@@ -220,9 +224,11 @@ public class Manage_ReservationController {
         int index=reservation_table.getSelectionModel().getSelectedIndex();
         if(index!=-1){
         Reservation reservation = Reservation.getInstance();
+        reservation.setId(reservationIDs.get(index));
         reservation.setShowtime(showTimesReserved.get(index));
         reservation.addSeatSelected(seatsReservedbyIndex.get(index));
         reservation.addFoodOrder(FoodItemsList.get(index));
+        reservation.setSeatsOld(seatsReservedbyIndex.get(index));
         SceneController.launchScene("Seats_Admin.fxml");
         }
 

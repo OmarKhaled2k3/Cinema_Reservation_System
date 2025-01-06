@@ -26,6 +26,7 @@ public class Cus_Controller {
     private void handleNewReservation (ActionEvent event) throws Exception {
         Reservation reservation = Reservation.getInstance();
         reservation.getCustomer().setModify(false);
+        if(reservation.getSeatsOld()!=null)reservation.getSeatsOld().clear();
         SceneController.launchScene("SelectMovie.fxml");
     }
 

@@ -15,7 +15,8 @@ public class ShowTime implements Printable {
     }
 
     public void setSeatList(ArrayList<Seat> seatList) {
-        this.seatList = seatList;
+        this.seatList = new ArrayList<>();
+        this.seatList.addAll(seatList);
         seatIDList=new ArrayList<Integer>();
         for(Seat seat:seatList){
             seatIDList.add(seat.getSeatNumber());
@@ -25,6 +26,13 @@ public class ShowTime implements Printable {
         seatIDList=new ArrayList<Integer>();
         for(Seat seat:seatList){
             seatIDList.add(seat.getSeatNumber());
+        }
+    }
+    public void RemoveSeats(ArrayList<Seat>seatListRemove){
+        for(int i=0;i<seatListRemove.size();i++){
+            if(seatList.contains(seatListRemove.get(i).getSeatNumber())){
+            seatList.remove((Integer) seatListRemove.get(i).getSeatNumber());
+            }
         }
     }
     public ArrayList<Integer> getSeatIDList(){

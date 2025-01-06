@@ -98,40 +98,49 @@ public class Customer extends User implements Reservable {
         }
         reservation.reset(++id);
     }
-    //ShowTime showTime = new ShowTime(Movie,starttime);
-    // Seats
-    //ShowTime showTime = new ShowTime(new Movie("dsfsdf","sdfs",50), LocalDateTime.now());
-    //Reservation reservation = new Reservation(new Customer("sdf","sdf","sdf","sdf") ,showTime,new ArrayList<Seat>());
     @Override
     public void cancelReservation() {
         Reservation reservation = Reservation.getInstance();
         int id = reservation.getId();
+        int foodOrderID=foodOrderID_Query(id);
 
-        try {
-            Database db = Database.getInstance();
-            ResultSet resultSet = db.executeQuery("delete * from reservation where id="+String.valueOf(id));
-            resultSet.close();
-
-        } catch (Exception exception) {
-            System.out.println("Error: " + exception);
+        String foodDeleteQuery="delete from foodorder where id="+String.valueOf(foodOrderID);
+        try (PreparedStatement stmt = Database.getInstance().getConnection().prepareStatement(foodDeleteQuery)) {
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        reservation.reset(id);
+        String reservationDeleteQuery="delete from reservation where id="+String.valueOf(id);
+        try (PreparedStatement stmt = Database.getInstance().getConnection().prepareStatement(reservationDeleteQuery)) {
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        deleteOldfromShowtime();
     }
     public void modifyReservation() {
-        Reservation reservation = Reservation.getInstance();
-        int reservationId = reservation.getId();
-        int showtimeID = reservation.getShowtime().getId();
-        try {
-            Database db = Database.getInstance();
-            String query;
-            query = String.format("UPDATE Reservation SET ShowtimeID = %d, seats=%s where id=%d",  showtimeID,reservation.getSeatSelectedString(),reservationId);
-            ResultSet resultSet = db.executeQuery(query);
-            resultSet.close();
+        cancelReservation();
+        createReservation();
+    }
 
-        } catch (Exception exception) {
-            System.out.println("Error: " + exception);
+    private void deleteOldfromShowtime() {
+        Reservation reservation = Reservation.getInstance();
+
+        reservation.getShowtime().RemoveSeats(reservation.getSeatsOld());
+        //reservation.getShowtime().setSeatList();
+        int showtimeID = reservation.getShowtime().getId();
+        ArrayList<Seat> showtimeReservedSeats=reservation.getShowtime().getSeatList();
+        String showtimeSeats = Seat.SeatsConversiontoString(showtimeReservedSeats);
+        String showtimeQuery = "UPDATE showtime SET seats=? where id=?";
+        try (PreparedStatement stmt = Database.getInstance().getConnection().prepareStatement(showtimeQuery)) {
+            stmt.setString(1, showtimeSeats);
+            stmt.setInt(2, showtimeID);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
+
     public int foodOrderID_Query() throws SQLException {
         int foodOrderID=0;
         Database db = Database.getInstance();
@@ -145,6 +154,24 @@ public class Customer extends User implements Reservable {
             resultSet.close();
         }
         foodOrderID++;
+        return foodOrderID;
+    }
+    public int foodOrderID_Query(int reservationID) {
+        int foodOrderID=0;
+        try{
+            Database db=Database.getInstance();
+            String foodOrderIDQuery = "Select foodorderid from reservation where id="+String.valueOf(reservationID);
+            ResultSet resultSet;
+            resultSet = db.executeQuery(foodOrderIDQuery);
+            if(resultSet!=null){
+                if(resultSet.next()){
+                    foodOrderID = resultSet.getInt("foodorderid");
+                }
+                resultSet.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return foodOrderID;
     }
     public void viewReservation() {

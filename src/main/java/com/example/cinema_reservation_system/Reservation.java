@@ -26,6 +26,17 @@ public class Reservation implements Printable {
     private ShowTime showtime;            // Showtime object
     private FoodOrder foodOrder;       // Food items list
     private ArrayList<Seat> seats;    // Selected seats list
+
+    public ArrayList<Seat> getSeatsOld() {
+        return seatsOld;
+    }
+
+    public void setSeatsOld(ArrayList<Seat> seatsOld) {
+        this.seatsOld=new ArrayList<>();
+        this.seatsOld.addAll(seatsOld);
+    }
+
+    private ArrayList<Seat> seatsOld;    // Selected seats list
     // Private constructor
     private Reservation() {
         reset(1);
@@ -138,7 +149,8 @@ public class Reservation implements Printable {
         this.seats.add(seat);
     }
     public void addSeatSelected(ArrayList<Seat> seats) {
-        this.seats = seats;
+        this.seats=new ArrayList<>();
+        this.seats .addAll(seats) ;
     }
     public void addSeatSelected(String seatString) {
         this.seats = Seat.SeatsConversion(seatString);
@@ -154,6 +166,7 @@ public class Reservation implements Printable {
         this.showtime = null;
         this.foodOrder=null;
         this.seats=null;
+        this.seatsOld=null;
         this.id=id;
     }
     public void printDetails() {
