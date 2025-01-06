@@ -1,5 +1,7 @@
 package com.example.cinema_reservation_system;
 
+import javafx.collections.ObservableList;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,6 @@ public class Reservation implements Printable {
     private ShowTime showtime;            // Showtime object
     private FoodOrder foodOrder;       // Food items list
     private ArrayList<Seat> seats;    // Selected seats list
-
     // Private constructor
     private Reservation() {
         reset(1);

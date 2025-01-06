@@ -21,6 +21,10 @@ public class Movie implements Printable {
         this.imageurl = new SimpleStringProperty(imageurl);
         this.description = new SimpleStringProperty(description);
     }
+    public Movie(int id, String title) {
+        this.title = new SimpleStringProperty(title);
+        this.id = new SimpleIntegerProperty(id);
+    }
 
     @Override
     public String toString() {

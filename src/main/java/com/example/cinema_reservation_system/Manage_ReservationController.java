@@ -3,7 +3,6 @@ package com.example.cinema_reservation_system;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,7 +14,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Manage_ReservationController {
-
+    private static ArrayList<ShowTime> showTimesReserved = new ArrayList<>();
+    private static ArrayList<ArrayList<Seat>> seatsReservedbyIndex = new ArrayList<ArrayList<Seat>>();
+    private static ArrayList<ArrayList<FoodItem>> FoodItemsList = new ArrayList<ArrayList<FoodItem>>();
     @FXML
     private Button btn_back;
 
@@ -83,8 +84,6 @@ public class Manage_ReservationController {
             return totalPrice;
         }
     }
-    //@FXML
-    //private TableColumn<ReservationDataObject, String> food_column;
 
     @FXML
     private TableColumn<ReservationDataObject, String> fooditem_subcolumn;
@@ -123,6 +122,7 @@ public class Manage_ReservationController {
     // Instance of SceneController to switch scenes
     private SceneController sceneController = new SceneController();
     ArrayList<ReservationDataObject> reservationDataObjectList = new ArrayList<>();
+
     @FXML
     private void initialize(){
         fooditem_subcolumn.setCellValueFactory(new PropertyValueFactory<>("fooditems"));
@@ -149,6 +149,7 @@ public class Manage_ReservationController {
                 "    s.ID AS ShowtimeID, "+
                 "    s.time AS Showtime,"+
                 "    r.seats AS Seats," +
+                "    s.seats AS AvailableSeats," +
                 "    fo.food AS FoodOrderItem," +
                 "    fo.quantity AS FoodQuantity" +
                 " FROM " +
@@ -165,17 +166,24 @@ public class Manage_ReservationController {
                 "    r.ID, m.title, m.ID, s.ID, s.time, r.seats, fo.food, fo.quantity",customerID);
         ResultSet resultSet = db.executeQuery(query);
         try{
+            showTimesReserved.clear();
+            seatsReservedbyIndex.clear();
+            FoodItemsList.clear();
             // Burger x5 - 20$ \n Pizza x3 - 10$
         if (resultSet != null) {
             while (resultSet.next()) {
                 int reservationID = resultSet.getInt("ReservationID");
+                int movieID = resultSet.getInt("MovieID");
                 int showtimeID = resultSet.getInt("ShowtimeID");
                 String foodOrderItem = resultSet.getString("FoodOrderItem"); // 4600000 Changed to String to match the food item type
                 String foodOrderQty = resultSet.getString("FoodQuantity"); // 5300000 Changed to String to match the food item type
                 String movieTitle = resultSet.getString("MovieTitle");
                 String showtime = resultSet.getString("Showtime");
                 String seatsReservedString=resultSet.getString("Seats").trim();
+                String showTimeSeats=resultSet.getString("AvailableSeats").trim();
                 ArrayList<Seat> seatsReserved = Seat.SeatsConversion(seatsReservedString);/// Seats# 1,4,6 Normal Total Price=10 \n Seats# 50,55 VIP Seats TP = 200
+                ArrayList<Seat> showTimeSeatsList = Seat.SeatsConversion(showTimeSeats);/// Seats# 1,4,6 Normal Total Price=10 \n Seats# 50,55 VIP Seats TP = 200
+
                 seatsReservedString = Seat.SeatsReservedDisplayFormat(seatsReserved);
                 ArrayList<FoodItem> foodItems=FoodOrder.StringtoFoodItems(foodOrderItem,foodOrderQty);
                 String FoodItemsDisplayFormat = "",FoodItemsQtyDisplayFormat = "";
@@ -184,11 +192,20 @@ public class Manage_ReservationController {
                     FoodItemsDisplayFormat = FoodItem.convertFoodNameListToString(foodItems);
                     FoodItemsQtyDisplayFormat = FoodItem.convertFoodQtyListToString(foodItems);
                     totalPriceFood=FoodItem.getTotalCost(foodItems);
+                    FoodItemsList.add(foodItems);
                 }
                 double totalPriceSeats=Seat.TotalSeatsPrice();
                 double totalPrice=totalPriceSeats+totalPriceFood;
                 ReservationDataObject reservationDataObject = new ReservationDataObject(reservationID,movieTitle,showtime,seatsReservedString,FoodItemsDisplayFormat,FoodItemsQtyDisplayFormat,totalPriceSeats,totalPriceFood,totalPrice);
                 reservationDataObjectList.add(reservationDataObject);
+
+                Movie movie = new Movie(movieID,movieTitle);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                LocalDateTime dateTime = LocalDateTime.parse(showtime, formatter);
+                ShowTime showTime = new ShowTime(showtimeID,movie,dateTime);
+                showTime.setSeatList(showTimeSeatsList);
+                showTimesReserved.add(showTime);
+                seatsReservedbyIndex.add(seatsReserved);
             }
             resultSet.close();
         }
@@ -200,8 +217,12 @@ public class Manage_ReservationController {
     }
     @FXML
     private void handleModifyButton(ActionEvent event) throws IOException {
-        sceneController.switchToScene2(event);
-
+        Reservation reservation = Reservation.getInstance();
+        int index=reservation_table.getSelectionModel().getSelectedIndex();
+        reservation.setShowtime(showTimesReserved.get(index));
+        reservation.addSeatSelected(seatsReservedbyIndex.get(index));
+        reservation.addFoodOrder(FoodItemsList.get(index));
+        SceneController.launchScene("Seats_Admin.fxml");
     }
     @FXML
     private void goBack() throws Exception{

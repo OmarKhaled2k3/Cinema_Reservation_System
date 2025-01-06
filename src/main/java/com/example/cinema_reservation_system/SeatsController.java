@@ -108,6 +108,7 @@ public class SeatsController implements Initializable {
         Reservation reservation = Reservation.getInstance();
         if(reservation.getSeatSelected() != null &&!reservation.getSeatSelected().isEmpty()){
             selectedSeats = reservation.getSeatSelected();
+            for(Seat seat:selectedSeats) selectedSeatsID.add(seat.getSeatNumber());
             UpdateCart();
         }
         String showtimeSeats = Seat.SeatsConversiontoString(reservation.getShowtime().getSeatList());
@@ -123,8 +124,13 @@ public class SeatsController implements Initializable {
                                 Rectangle CurrentSeat = (Rectangle) seat;
                                 int seatID=Integer.parseInt(CurrentSeat.getId().substring(4));
                                 System.out.println(seatID);
-                                if(reservation.getSeatSelected() != null &&!reservation.getSeatSelected().isEmpty() && reservation.getSeatSelectedString().charAt(seatID-1)=='1')CurrentSeat.setFill(Color.RED);
-                                else if(showtimeSeats.charAt(seatID-1)=='1') CurrentSeat.setFill(Color.GRAY);
+                                if(reservation.getSeatSelected() != null &&!reservation.getSeatSelected().isEmpty()){
+                                 if(showtimeSeats.charAt(seatID-1)=='1' && reservation.getSeatSelectedString().charAt(seatID-1)=='0') CurrentSeat.setFill(Color.GRAY);
+                                else if( reservation.getSeatSelectedString().charAt(seatID-1)=='1')CurrentSeat.setFill(Color.RED);
+
+                                }
+                                else if(showtimeSeats.charAt(seatID-1)=='1' ) CurrentSeat.setFill(Color.GRAY);
+
                             }
                         }
                     }
@@ -139,30 +145,36 @@ public class SeatsController implements Initializable {
         Rectangle seatPressed = (Rectangle) mouseEvent.getSource();
         int seatID=Integer.parseInt(seatPressed.getId().substring(4));
         //System.out.println(seatPressed.getId());
-        if(showtimeSeats.contains(seatID)){
-            Alert a = new Alert(Alert.AlertType.NONE);
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("This seat is cannot be reserved");
-            a.show();
+        boolean selectedSeatsisvalid = !selectedSeatsID.isEmpty();
+        boolean case1= showtimeSeats.contains(seatID) && selectedSeatsisvalid && selectedSeatsID.contains(seatID); // Change from RED to BLUE;
+        boolean case2= !showtimeSeats.contains(seatID) && selectedSeatsisvalid && !selectedSeatsID.contains(seatID); // Change from Blue to RED;
+        boolean case3= !showtimeSeats.contains(seatID) && !selectedSeatsisvalid ; // Change from Blue to Red
+        boolean case4= !showtimeSeats.contains(seatID) && selectedSeatsisvalid && selectedSeatsID.contains(seatID); // Change from Blue to RED;
+        if(case2 || case3){
+            seatPressed.setFill(Color.RED);
+            selectedSeatsID.add(seatID);
+            Seat seat = new Seat(seatID,true);
+            selectedSeats.add(seat);
+            UpdateCart();
         }
-        else {
+        else if(case1 || case4){
+            if(Seat.getType(seatID).equals("Standard") )
+                seatPressed.setFill(Color.DODGERBLUE);
+            else
+                seatPressed.setFill(VIPcolor);
+            selectedSeatsID.remove(Integer.valueOf(seatID));
+            selectedSeats.remove(Seat.getSeatbyID(selectedSeats,seatID));
+            if(showtimeSeats.contains(seatID)) showtimeSeats.remove((Integer) seatID);
+            UpdateCart();
+        }
+             //when i can change : seat selected is not in showtimeseats or( seat is in showtimeseats and in selected id)
 
-            if(!selectedSeatsID.contains(seatID)){
-                seatPressed.setFill(Color.RED);
-                selectedSeatsID.add(seatID);
-                Seat seat = new Seat(seatID,true);
-                selectedSeats.add(seat);
-                UpdateCart();
-            }
-            else{
-                if(Seat.getType(seatID).equals("Standard") )
-                    seatPressed.setFill(Color.DODGERBLUE);
-                else
-                    seatPressed.setFill(VIPcolor);
-                selectedSeatsID.remove(Integer.valueOf(seatID));
-                selectedSeats.remove(Seat.getSeatbyID(selectedSeats,seatID));
-                UpdateCart();
-            }
+        else {
+        Alert a = new Alert(Alert.AlertType.NONE);
+        a.setAlertType(Alert.AlertType.ERROR);
+        a.setContentText("This seat is cannot be reserved");
+        a.show();
+
         }
     }
     public void UpdateCart(){

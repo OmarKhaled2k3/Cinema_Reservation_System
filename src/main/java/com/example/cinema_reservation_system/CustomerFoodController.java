@@ -67,7 +67,12 @@ public class CustomerFoodController implements Initializable {
         // Load and display beverage items
         ArrayList<FoodItem> beverageItems = retrieveFoodItems("Beverage");
         displayItemsInHBox(beverageImagesHBox, beverageItems);
+        Reservation reservation = Reservation.getInstance();
+        if(reservation.getFoodOrder()!=null){
+            ObservableList<FoodItem> observableFoodItems = FXCollections.observableArrayList(reservation.getFoodOrder().getFoodItems());
+            selectedItems=  observableFoodItems;
 
+        }
         // Populate the table with initial data (if any)
         tableid.setItems(selectedItems);
 

@@ -27,6 +27,10 @@ public class FoodOrder implements Printable {
         this.foodItems = new ArrayList<>();
         this.foodItems.addAll(foodItems);
     }
+    public FoodOrder(ArrayList<FoodItem> foodItems) {
+        this.foodItems = new ArrayList<>();
+        this.foodItems.addAll(foodItems);
+    }
 
     public void addItems(FoodItem item) {
         foodItems.add(item);
