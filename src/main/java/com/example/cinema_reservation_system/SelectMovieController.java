@@ -66,16 +66,21 @@ public class SelectMovieController implements Initializable {
     }
 
     private void addImage(int id,String imageurl, String movieDescription,int colIndex, int rowIndex) {
-        image = new Image(imageurl);
-        pic = new ImageView();
-        pic.setFitWidth(160);
-        pic.setFitHeight(220);
-        pic.setImage(image);
-        pic.setId(String.valueOf(id));
-        hb.getChildren().add(pic);
-        GridPane.setConstraints(pic, colIndex, rowIndex, 1, 1, HPos.CENTER, VPos.CENTER);
-        grid.getChildren().addAll(pic);
-        Tooltip t = new Tooltip(movieDescription); Tooltip. install(pic, t);
+        try {
+            image = new Image(imageurl);
+            pic = new ImageView();
+            pic.setFitWidth(160);
+            pic.setFitHeight(220);
+            pic.setImage(image);
+            pic.setId(String.valueOf(id));
+            hb.getChildren().add(pic);
+            GridPane.setConstraints(pic, colIndex, rowIndex, 1, 1, HPos.CENTER, VPos.CENTER);
+            grid.getChildren().addAll(pic);
+            Tooltip t = new Tooltip(movieDescription); Tooltip. install(pic, t);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
 
         pic.setOnMouseClicked(e -> {
             // System.out.printf("Mouse clicked cell [%d, %d]%n", rowIndex, colIndex);

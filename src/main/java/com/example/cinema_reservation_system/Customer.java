@@ -9,6 +9,10 @@ public class Customer extends User implements Reservable {
         super(name, email,username,password);
 
     }
+    public Customer(String name,int id) {
+        super(name, id);
+
+    }
     @Override
     public void login() {
         System.out.println(name + " logged in.");

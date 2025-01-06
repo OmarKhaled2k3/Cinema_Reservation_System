@@ -1,6 +1,5 @@
 package com.example.cinema_reservation_system;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,12 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -30,46 +25,77 @@ import java.util.ResourceBundle;
 
 
 public class SeatsController implements Initializable {
+
+    public static class SeatDataObject {
+        private String seats="";
+        private Double price=0d;
+        private Integer qty=0;
+        private Double totalPrice=0d;
+        private String type;
+
+        public Integer getQty() {
+            return qty;
+        }
+
+        public String getSeats() {
+            return seats;
+        }
+
+        public Double getPrice() {
+            return price;
+        }
+
+        public Double getTotalPrice() {
+            return totalPrice;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public SeatDataObject(String seats, Double price, Integer qty, Double totalPrice, String type) {
+            this.seats = seats;
+            this.price = price;
+            this.qty = qty;
+            this.totalPrice = totalPrice;
+            this.type = type;
+        }
+    }
     @FXML
-    private TableColumn<ObservableList<String>, String> pricecolumn ;
-    @FXML
-    private TableColumn<ObservableList<String>, String> qtycolumn;
-    @FXML
-    private TableColumn<ObservableList<String>, String> seatscolumn;
+    private TableColumn<SeatDataObject, Double> pricecolumn  ;
 
     @FXML
-    private TableView<ObservableList<String>> tableview ;
+    private TableColumn<SeatDataObject, Integer> qtycolumn ;
+    @FXML
+    private TableColumn<SeatDataObject, String> seatscolumn ;
 
     @FXML
-    private TableColumn<ObservableList<String>, String> totalpricecolumn;
+    private TableView<SeatDataObject> tableview  ;
+
+    @FXML
+    private TableColumn<SeatDataObject,Double> totalpricecolumn ;
 
     @FXML
     private Label totalpricelabel;
 
     @FXML
-    private TableColumn<ObservableList<String>, String> typecolumn;
+    private TableColumn<SeatDataObject, String> typecolumn;
     public HBox AllSeats;
     @FXML
     private Label welcomeText;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    @FXML
+    private Button btn_save;
     ArrayList<Integer> selectedSeatsID =new ArrayList<>();
     ArrayList<Seat>selectedSeats=new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tableview = new TableView<>();
-
-        seatscolumn = createColumn("Seat Number", 0);
-        typecolumn = createColumn("Type", 1);
-         qtycolumn = createColumn("Quantity", 2);
-        pricecolumn = createColumn("Price", 3);
-        totalpricecolumn = createColumn("Total Price", 4);
-        tableview.getColumns().addAll(seatscolumn, typecolumn, pricecolumn,qtycolumn, totalpricecolumn);
-
+        pricecolumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        qtycolumn.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        seatscolumn.setCellValueFactory(new PropertyValueFactory<>("seats"));
+        totalpricecolumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+        typecolumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         CheckSeatsAvailability();
-
     }
     @FXML
     public void backToSelectedMovieScene(ActionEvent event) throws IOException {
@@ -103,6 +129,7 @@ public class SeatsController implements Initializable {
         }
     }
     public void SelectSeat(MouseEvent mouseEvent) throws IOException {
+        Color VIPcolor = new Color(0.248, 0.7763, 0.4417, 1.0);
         Reservation reservation = Reservation.getInstance();
         ArrayList<Integer> showtimeSeats = reservation.getShowtime().getSeatIDList();
         Rectangle seatPressed = (Rectangle) mouseEvent.getSource();
@@ -124,48 +151,55 @@ public class SeatsController implements Initializable {
                 UpdateCart();
             }
             else{
+                if(Seat.getType(seatID).equals("Standard") )
+                    seatPressed.setFill(Color.DODGERBLUE);
+                else
+                    seatPressed.setFill(VIPcolor);
                 selectedSeatsID.remove(Integer.valueOf(seatID));
-                selectedSeats.remove(new Seat(seatID,true));
-                seatPressed.setFill(Color.BLUE);
+                selectedSeats.remove(Seat.getSeatbyID(selectedSeats,seatID));
                 UpdateCart();
             }
         }
     }
     public void UpdateCart(){
-        //tableview.getItems().add(seat);
-        ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
         String vipSeats="",standardSeats="";
         Double standardPrice=0d,vipPrice=0d;
         int standardQty=0,vipQty=0;
+        String type="";
+        double standard_seat_price = 100;
+        double vip_seat_price=120 ;
         for(Seat sid :selectedSeats){
             if(sid.getType().equals("Standard")){
+                standard_seat_price=sid.getSeatPrice(sid.getSeatNumber());
                 standardSeats+=sid.getSeatNumber() +" ,";
-                standardPrice+=sid.getSeatPrice(sid.getSeatNumber());
+                standardPrice+=standard_seat_price;
                 standardQty++;
             }
             else{
+                vip_seat_price=sid.getSeatPrice(sid.getSeatNumber());
                 vipSeats+=sid.getSeatNumber()+" ,";
-                vipPrice+=sid.getSeatPrice(sid.getSeatNumber());
+                vipPrice+=vip_seat_price;
                 vipQty++;
             }
         }
-        // Add rows of raw data
-        if(standardQty>0)data.add(FXCollections.observableArrayList(standardSeats, "Standard", "100", String.valueOf(standardQty), String.valueOf(standardPrice)));
-        if(vipQty>0)data.add(FXCollections.observableArrayList(vipSeats, "VIP", "120", String.valueOf(vipQty), String.valueOf(vipPrice)));
-        tableview.setItems(data);
+        tableview.getItems().clear();
 
-    }
-    private TableColumn<ObservableList<String>, String> createColumn(String title, int index) {
-        TableColumn<ObservableList<String>, String> column = new TableColumn<>(title);
-        column.setCellValueFactory(cellData -> {
-            ObservableList<String> row = cellData.getValue();
-            return new SimpleStringProperty(row.get(index));
-        });
-        column.setCellFactory(TextFieldTableCell.forTableColumn());
-        return column;
+        if(standardQty>0){
+            type="Standard";
+            SeatDataObject seatDataObject = new SeatDataObject(standardSeats,standard_seat_price,standardQty,standardPrice,type);
+            tableview.getItems().add(seatDataObject);
+        }
+        if(vipQty>0){
+            type="VIP";
+            SeatDataObject seatDataObject = new SeatDataObject(vipSeats,vip_seat_price,vipQty,vipPrice,type);
+            tableview.getItems().add(seatDataObject);
+        }
+        totalpricelabel.setText(String.valueOf(standardPrice+vipPrice)+"$");
     }
     //To be removed
     @FXML
-    private void skip() throws IOException {
+    private void next() throws IOException {
+        Reservation reservation = Reservation.getInstance();
+        reservation.addSeatSelected(selectedSeats);
         SceneController.launchScene("Food_CustomerTab.fxml");
 }}
