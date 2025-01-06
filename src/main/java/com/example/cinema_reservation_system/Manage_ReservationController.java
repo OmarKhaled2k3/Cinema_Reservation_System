@@ -1,6 +1,7 @@
 package com.example.cinema_reservation_system;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
@@ -26,6 +27,9 @@ public class Manage_ReservationController {
 
     @FXML
     private Button btn_remove;
+
+
+
     public static class ReservationDataObject {
         private int resID;
         private String movieName;
@@ -240,5 +244,36 @@ public class Manage_ReservationController {
     @FXML
     private void goBackc() throws Exception{
         SceneController.launchScene("Customer_View.fxml");
+    }
+    public void remove(ActionEvent actionEvent) {
+        int index = reservation_table.getSelectionModel().getSelectedIndex();
+        if (index != -1) {
+            Reservation reservation = Reservation.getInstance();
+            reservation.setId(reservationIDs.get(index));
+            reservation.setShowtime(showTimesReserved.get(index));
+            reservation.addSeatSelected(seatsReservedbyIndex.get(index));
+            reservation.addFoodOrder(FoodItemsList.get(index));
+            reservation.setSeatsOld(seatsReservedbyIndex.get(index));
+            reservation.getShowtime().UpdateSeatsInverted();
+            reservation.getCustomer().cancelReservation();
+            reservation.reset(reservationIDs.get(index));
+            RemoveatIndex(index);
+            reservation_table.refresh();
+            showAlert("","Reservaton deleted successfully");
+        }
+    }
+    private void RemoveatIndex(int index){
+        showTimesReserved.remove(index);
+        seatsReservedbyIndex.remove(index);
+        FoodItemsList.remove(index);
+        reservationIDs.remove(index);
+        reservation_table.getItems().remove(index);
+        reservationDataObjectList.remove(index);
+    }
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

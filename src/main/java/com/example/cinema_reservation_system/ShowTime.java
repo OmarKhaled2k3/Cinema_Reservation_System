@@ -38,6 +38,16 @@ public class ShowTime implements Printable {
         seatList=new ArrayList<>();
         seatList.addAll(newSeats);
     }
+    public void UpdateSeatsInverted(){
+        ArrayList<Seat>newSeats=new ArrayList<>();
+        for (Seat seat : seatList) {
+            if (!seatIDList.contains(seat.getSeatNumber())) {
+                newSeats.add(seat);
+            }
+        }
+        seatList=new ArrayList<>();
+        seatList.addAll(newSeats);
+    }
     public ArrayList<Integer> getSeatIDList(){
         return  seatIDList;
     }

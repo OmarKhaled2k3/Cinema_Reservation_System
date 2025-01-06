@@ -22,12 +22,12 @@
       </StackPane>
       <HBox alignment="CENTER" layoutX="140.0" layoutY="451.0" prefHeight="68.0" prefWidth="531.0" spacing="50.0">
          <children>
-            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" onAction="#goBackc" text="Back">
+            <Button fx:id="btn_back" mnemonicParsing="false" onAction="#goBackc" prefHeight="40.0" prefWidth="90.0" text="Back">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_remove" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Remove">
+            <Button fx:id="btn_remove" mnemonicParsing="false" onAction="#remove" prefHeight="40.0" prefWidth="90.0" text="Remove">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
