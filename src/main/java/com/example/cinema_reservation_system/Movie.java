@@ -22,6 +22,11 @@ public class Movie implements Printable {
         this.description = new SimpleStringProperty(description);
     }
 
+    @Override
+    public String toString() {
+        return title.get();
+    }
+
     public String getDescription() {
         return description.get();
     }

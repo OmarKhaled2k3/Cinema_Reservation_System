@@ -45,12 +45,12 @@
       </VBox>
       <HBox alignment="CENTER" layoutY="299.0" prefHeight="101.0" prefWidth="600.0" spacing="80.0">
          <children>
-            <Button fx:id="btn_back" mnemonicParsing="false" onAction="#goBack1" prefHeight="40.0" prefWidth="80.0" text="Back">
+            <Button fx:id="btn_back" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="80.0" text="Back">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_add" layoutX="284.0" layoutY="48.0"  mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Add" onAction="#addShowtime">
+            <Button fx:id="btn_add" layoutX="284.0" layoutY="48.0"  mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Add" onAction="#addShowtime" >
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -60,7 +60,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_save" layoutX="336.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Save" onAction="#saveShowtimeToDB">
+            <Button fx:id="btn_save" layoutX="336.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Save" onAction="#Savebtn">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

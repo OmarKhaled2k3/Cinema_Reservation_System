@@ -71,6 +71,7 @@ public class AdminShowtab1Controller implements Initializable {
         return movies;
     }
 
+
     @FXML
     private void goBack() throws IOException {
         SceneController.launchScene("Admin_View.fxml");
@@ -80,5 +81,7 @@ public class AdminShowtab1Controller implements Initializable {
     private void gotomanage2() throws IOException {
         setSelectedMovie(box_movies.getSelectionModel().getSelectedItem());
         SceneController.launchScene("Admin_Showtimetab2.fxml");
+        AdminShowtab2Controller.setMovieDetails(selectedMovie.getId(),selectedMovie.getTitle());
     }
+
 }
