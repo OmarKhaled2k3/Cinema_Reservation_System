@@ -41,14 +41,17 @@ public class Cus_Controller {
     // Method to handle "Log Out" button action
     @FXML
     private void handleLogout(ActionEvent event) throws IOException {
+
         SceneController.launchScene("login_page.fxml");
         // Add logic for logging out, such as navigating to the login screen
     }
 
+
+
+
     // You can initialize the controller here
     @FXML
     public void initialize() {
-
-        user_label.setText("Guest");
+        user_label.setText(Reservation.getInstance().getCustomer().getName());
     }
 }
