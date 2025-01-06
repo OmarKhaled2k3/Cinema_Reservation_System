@@ -3,6 +3,7 @@ package com.example.cinema_reservation_system;
 import javafx.beans.property.*;
 
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 public class FoodItem implements Printable {
     private final IntegerProperty id;
@@ -20,7 +21,43 @@ public class FoodItem implements Printable {
         this.qty = new SimpleIntegerProperty(qty);
         this.imageurl = new SimpleStringProperty(imageurl);
     }
+    public FoodItem(int id, String name, double price, int qty) {
+        this.id = new SimpleIntegerProperty(id);
+        this.name = new SimpleStringProperty(name);
+        this.price = new SimpleDoubleProperty(price);
+        this.qty = new SimpleIntegerProperty(qty);
+        this.type=null;
+        this.imageurl=null;
+    }
+    public static String convertFoodNameListToString(ArrayList<FoodItem> foodList) {
+        StringBuilder result = new StringBuilder();
 
+        for (FoodItem food : foodList) {
+            result.append(food.getName())
+                    .append(" \n ");
+        }
+
+
+        return result.toString();
+    }
+    public static String convertFoodQtyListToString(ArrayList<FoodItem> foodList) {
+        StringBuilder result = new StringBuilder();
+
+        for (FoodItem food : foodList) {
+            result.append(" x")
+                    .append(food.getQty())
+                    .append(" \n ");
+        }
+
+        return result.toString();
+    }
+    public static double getTotalCost(ArrayList<FoodItem>foodItems){
+        double totalCost=0;
+        for(FoodItem foodItem : foodItems){
+            totalCost+=foodItem.getPrice()* foodItem.getQty();
+        }
+        return totalCost;
+    }
     // Getters and setters
     public int getId() {
         return id.get();

@@ -2,6 +2,9 @@ package com.example.cinema_reservation_system;
 
 import javafx.collections.ObservableList;
 
+import java.sql.ResultSet;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class FoodOrder implements Printable {
@@ -42,6 +45,33 @@ public class FoodOrder implements Printable {
             foodItemsString.setCharAt(index++, String.valueOf(food.getId()).charAt(0) );
         }
         return foodItemsString.toString();
+    }
+    public static ArrayList<FoodItem> StringtoFoodItems(String foodItemsID,String foodItemQty){
+        int foodlastindex = foodItemsID.indexOf('0');
+        ArrayList<FoodItem> foodItems = new ArrayList<>();
+        if(foodlastindex >0){
+            String ActualfoodItemsID=foodItemsID.substring(0,foodlastindex);
+            for(int i=0;i<ActualfoodItemsID.length();i++){
+                int foodid=Integer.parseInt(String.valueOf(ActualfoodItemsID.charAt(i)));
+                try {
+                    Database db = Database.getInstance();
+                    ResultSet resultSet = db.executeQuery("select * from food where id="+foodid);
+                    if (resultSet != null) {
+                        while (resultSet.next()) {
+                            String foodName=resultSet.getString("name").trim();
+                            Double foodPrice=resultSet.getDouble("price");
+                            foodItems.add(new FoodItem(foodid,foodName,foodPrice,Integer.parseInt(String.valueOf(foodItemQty.charAt(i)))));
+
+                        }
+                        resultSet.close();
+                    }
+                } catch (Exception exception) {
+                    System.out.println("Error: " + exception);
+                }
+            }
+            return foodItems;
+        }
+        else return null;
     }
     public String FoodQtyToString(){
         StringBuilder foodQtyString = new StringBuilder("000000000");

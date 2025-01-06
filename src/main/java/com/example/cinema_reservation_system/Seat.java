@@ -8,6 +8,9 @@ public class Seat implements Printable{
     private String type ;
     private double basePrice = 100;
     private double VIP = 20;
+    private static ArrayList<Seat>standardSeats=new ArrayList<>();
+    private static ArrayList<Seat>vipSeats=new ArrayList<>();
+
     public Seat(int seatNumber) {
         this.seatNumber = seatNumber;
         this.isReserved = false;
@@ -40,6 +43,49 @@ public class Seat implements Printable{
         }
         return seatsString.toString();
     }
+    private static void SortSeatsSelectedbyType(ArrayList<Seat>seats) {
+        for(Seat seat : seats){
+            if(!seat.isVIP(seat))
+                standardSeats.add(seat);
+            else{
+                vipSeats.add(seat);
+            }
+        }
+    }
+    public static double TotalSeatsPrice(){
+        double standardSeatsPrice=0d;
+        double vipSeatsPrice=0d;
+        if(!standardSeats.isEmpty())
+            standardSeatsPrice= standardSeats.size()*standardSeats.getFirst().getSeatPrice();
+        if(!vipSeats.isEmpty())
+            vipSeatsPrice= vipSeats.size()*vipSeats.getFirst().getSeatPrice();
+        return standardSeatsPrice+vipSeatsPrice;
+    }
+    public static String SeatsReservedDisplayFormat(ArrayList<Seat> seatsReserved){
+        SortSeatsSelectedbyType(seatsReserved);
+        int standardSeatsQty=standardSeats.size();
+        int vipSeatsQty=vipSeats.size();
+        String vipDetails=" ",standardDetails=" ";
+        if(!standardSeats.isEmpty()){
+            standardDetails="Std #: [";
+            for(Seat seat :standardSeats){
+                standardDetails+=seat.seatNumber+", ";
+            }
+            standardDetails+="] x"+String.valueOf(vipSeatsQty);
+            standardDetails+=" TP:"+String.valueOf(standardSeatsQty*standardSeats.getFirst().getSeatPrice() + '\n');
+        }
+        if(!vipSeats.isEmpty()){
+            vipDetails="VIP#: [";
+            for(Seat seat :vipSeats){
+                vipDetails+=seat.seatNumber+", ";
+            }
+            vipDetails+="] x"+String.valueOf(vipSeatsQty);
+            vipDetails+=" TP="+String.valueOf(vipSeatsQty*vipSeats.getFirst().getSeatPrice());
+        }
+
+        return standardDetails+'\n'+vipDetails;
+
+    }
     public boolean isReserved() { return isReserved; }
 
     public void setReserved(boolean reserved) {
@@ -65,6 +111,10 @@ public class Seat implements Printable{
         return type;
     }
     public boolean isVIP(){
+        return type.equals("VIP");
+    }
+    public boolean isVIP(Seat seat){
+        String type = seat.getType();
         return type.equals("VIP");
     }
     public static String getType(int seatNumber) {
