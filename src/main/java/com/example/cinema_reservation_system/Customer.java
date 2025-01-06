@@ -126,7 +126,7 @@ public class Customer extends User implements Reservable {
     private void deleteOldfromShowtime() {
         Reservation reservation = Reservation.getInstance();
 
-        reservation.getShowtime().RemoveSeats(reservation.getSeatsOld());
+        reservation.getShowtime().UpdateSeats();
         //reservation.getShowtime().setSeatList();
         int showtimeID = reservation.getShowtime().getId();
         ArrayList<Seat> showtimeReservedSeats=reservation.getShowtime().getSeatList();

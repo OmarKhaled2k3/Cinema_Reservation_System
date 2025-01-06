@@ -28,12 +28,15 @@ public class ShowTime implements Printable {
             seatIDList.add(seat.getSeatNumber());
         }
     }
-    public void RemoveSeats(ArrayList<Seat>seatListRemove){
-        for(int i=0;i<seatListRemove.size();i++){
-            if(seatList.contains(seatListRemove.get(i).getSeatNumber())){
-            seatList.remove((Integer) seatListRemove.get(i).getSeatNumber());
+    public void UpdateSeats(){
+        ArrayList<Seat>newSeats=new ArrayList<>();
+        for (Seat seat : seatList) {
+            if (seatIDList.contains(seat.getSeatNumber())) {
+                newSeats.add(seat);
             }
         }
+        seatList=new ArrayList<>();
+        seatList.addAll(newSeats);
     }
     public ArrayList<Integer> getSeatIDList(){
         return  seatIDList;
