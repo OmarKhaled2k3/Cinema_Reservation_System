@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminReservationTabController">
+<AnchorPane prefHeight="573.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminReservationTabController">
    <children>
-      <HBox alignment="CENTER" layoutX="-1.0" layoutY="316.0" prefHeight="84.0" prefWidth="600.0" spacing="120.0">
+      <HBox alignment="CENTER" layoutX="97.0" layoutY="475.0" prefHeight="84.0" prefWidth="600.0" spacing="250.0">
          <children>
             <Button fx:id="btn_back" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="80.0" text="Back">
                <font>
@@ -25,7 +25,7 @@
             </Button>
          </children>
       </HBox>
-      <VBox alignment="TOP_CENTER" layoutX="51.0" layoutY="37.0" prefHeight="233.0" prefWidth="217.0" spacing="65.0">
+      <VBox alignment="TOP_CENTER" layoutX="90.0" layoutY="107.0" prefHeight="308.0" prefWidth="307.0" spacing="65.0">
          <children>
             <Label alignment="CENTER" prefHeight="30.0" prefWidth="114.0" text="Pick movie:">
                <font>
@@ -35,14 +35,14 @@
             <ComboBox fx:id="movie_dropdown" prefHeight="25.0" prefWidth="196.0" promptText="Movies" />
          </children>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="317.0" layoutY="32.0" prefHeight="243.0" prefWidth="263.0">
+      <VBox alignment="TOP_CENTER" layoutX="397.0" layoutY="107.0" prefHeight="308.0" prefWidth="291.0">
          <children>
             <Label alignment="CENTER" prefHeight="37.0" prefWidth="125.0" text="Pick Showtime:">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <ListView fx:id="showtime_list" prefHeight="208.0" prefWidth="281.0" />
+            <ListView fx:id="showtime_list" prefHeight="274.0" prefWidth="291.0" />
          </children>
       </VBox>
    </children>

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="533.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.Manage_ReservationController">
+<AnchorPane prefHeight="573.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.Manage_ReservationController">
    <children>
       <StackPane layoutX="42.0" layoutY="14.0" prefHeight="68.0" prefWidth="702.0">
          <children>
@@ -20,7 +20,7 @@
             </Label>
          </children>
       </StackPane>
-      <HBox alignment="CENTER" layoutX="140.0" layoutY="451.0" prefHeight="68.0" prefWidth="531.0" spacing="50.0">
+      <HBox alignment="CENTER" layoutX="75.0" layoutY="470.0" prefHeight="68.0" prefWidth="644.0" spacing="150.0">
          <children>
             <Button fx:id="btn_back" mnemonicParsing="false" onAction="#goBackc" prefHeight="40.0" prefWidth="90.0" text="Back">
                <font>
@@ -39,7 +39,7 @@
             </Button>
          </children>
       </HBox>
-      <TableView fx:id="reservation_table" layoutX="42.0" layoutY="93.0" prefHeight="300.0" prefWidth="726.0">
+      <TableView fx:id="reservation_table" layoutX="30.0" layoutY="94.0" prefHeight="300.0" prefWidth="726.0">
         <columns>
           <TableColumn fx:id="resid_column" prefWidth="50.0" text="Res ID" />
             <TableColumn fx:id="moviename_column" prefWidth="95.0" text="Movie" />

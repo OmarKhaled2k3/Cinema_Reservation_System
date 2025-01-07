@@ -10,59 +10,75 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.register_controller">
+<AnchorPane prefHeight="573.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.register_controller">
    <children>
-      <StackPane layoutX="65.0" layoutY="14.0" prefHeight="54.0" prefWidth="474.0">
+      <StackPane layoutX="123.0" layoutY="14.0" prefHeight="83.0" prefWidth="548.0">
          <children>
             <Label fx:id="registerlabel" alignment="CENTER" prefHeight="54.0" prefWidth="342.0" text="Register">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="31.0" />
                </font>
             </Label>
          </children>
       </StackPane>
-      <VBox alignment="CENTER" layoutX="140.0" layoutY="93.0" prefHeight="175.0" prefWidth="160.0" spacing="14.0">
-         <children>
-            <Label fx:id="namelabel" alignment="CENTER" prefHeight="21.0" prefWidth="166.0" text="Enter Your Name:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="usernamelabel" text="Create a Username:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="emailLabel" text="Enter Your E-mail:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="passwoedlabel" text="Create password:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="confirmpasswordlabel" text="Confirm password:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
+      <VBox alignment="CENTER" layoutX="123.0" layoutY="127.0" prefHeight="320.0" prefWidth="564.0" spacing="14.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="302.0" layoutY="93.0" prefHeight="175.0" prefWidth="160.0" spacing="8.0">
          <children>
-            <TextField fx:id="name_field" prefHeight="26.0" prefWidth="160.0" />
-            <TextField fx:id="uname_field" />
-            <TextField fx:id="email_field" />
-            <TextField fx:id="pass_field" />
-            <TextField fx:id="cpass_field" />
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="470.0" spacing="40.0">
+               <children>
+                  <Label fx:id="namelabel" alignment="CENTER" prefHeight="21.0" prefWidth="133.0" text="Enter Your Name:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="name_field" prefHeight="25.0" prefWidth="227.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="470.0" spacing="40.0">
+               <children>
+                  <Label fx:id="usernamelabel" alignment="CENTER" prefHeight="21.0" prefWidth="133.0" text="Create a Username:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="uname_field" prefWidth="227.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="470.0" spacing="40.0">
+               <children>
+                  <Label fx:id="emailLabel" alignment="CENTER" prefHeight="21.0" prefWidth="133.0" text="Enter Your E-mail:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="email_field" prefWidth="227.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="273.0" spacing="40.0">
+               <children>
+                  <Label fx:id="passwoedlabel" alignment="CENTER" prefHeight="21.0" prefWidth="133.0" text="Create password:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="pass_field" prefWidth="227.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="273.0" spacing="40.0">
+               <children>
+                  <Label fx:id="confirmpasswordlabel" alignment="CENTER" prefHeight="21.0" prefWidth="133.0" text="Confirm password:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="cpass_field" prefWidth="227.0" />
+               </children>
+            </HBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="32.0" layoutY="317.0" prefHeight="69.0" prefWidth="539.0" spacing="150.0">
+      <HBox alignment="CENTER" layoutX="39.0" layoutY="479.0" prefHeight="69.0" prefWidth="716.0" spacing="300.0">
          <children>
             <Button fx:id="btn_btl" mnemonicParsing="false" onAction="#backToLogin" prefHeight="40.0" prefWidth="122.0" text="Back To Login">
                <font>

@@ -14,88 +14,103 @@
 
 <!--Admin-->
 
-
-<AnchorPane prefHeight="536.0" prefWidth="863.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminMovieController">
+<AnchorPane prefHeight="573.0" prefWidth="794.0" scaleShape="false" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminMovieController">
    <children>
-      <TableView fx:id="table_view" layoutX="288.0" layoutY="65.0" prefHeight="326.0" prefWidth="566.0">
+      <VBox alignment="CENTER" layoutX="13.0" layoutY="99.0" prefHeight="391.0" prefWidth="261.0" spacing="30.0">
+         <children>
+            <HBox prefHeight="46.0" prefWidth="242.0" spacing="20.0">
+               <children>
+                  <Label fx:id="name" prefHeight="28.0" prefWidth="85.0" text="Name:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="namebox" />
+               </children>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="205.0" spacing="20.0">
+               <children>
+                  <Label fx:id="genre1" prefHeight="21.0" prefWidth="85.0" text="Genre:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="genrebox" />
+               </children>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="216.0" spacing="20.0">
+               <children>
+                  <Label fx:id="duration1" prefHeight="21.0" prefWidth="85.0" text="Duration:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="durationbox" prefHeight="25.0" prefWidth="148.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="85.0" text="ImageUrl:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="imageurlbox" />
+               </children>
+            </HBox>
+            <HBox prefHeight="188.0" prefWidth="261.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="85.0" text="Description:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="textarea" prefHeight="169.0" prefWidth="149.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="table_view" layoutX="274.0" layoutY="99.0" prefHeight="391.0" prefWidth="510.0">
         <columns>
           <TableColumn fx:id="name_column" prefWidth="75.0" text="Name" />
           <TableColumn fx:id="genre_column" prefWidth="75.0" text="Genre" />
             <TableColumn fx:id="duration_column" prefWidth="75.0" text="Duration" />
             <TableColumn fx:id="url_column" prefWidth="75.0" text="URL" />
-            <TableColumn fx:id="desc_column" prefWidth="265.0" text="Description" />
+            <TableColumn fx:id="desc_column" prefWidth="209.0" text="Description" />
         </columns>
       </TableView>
-      <HBox alignment="CENTER" layoutX="140.0" layoutY="424.0" prefHeight="83.0" prefWidth="584.0" spacing="70.0">
+      <HBox alignment="CENTER" layoutX="105.0" layoutY="490.0" prefHeight="83.0" prefWidth="584.0" spacing="70.0">
          <children>
-            <Button fx:id="back_button" layoutX="186.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" onAction="#goBack" text="Back">
+            <Button fx:id="back_button" layoutX="186.0" layoutY="10.0" mnemonicParsing="false" onAction="#goBack" prefHeight="42.0" prefWidth="88.0" text="Back">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="add_button" mnemonicParsing="false" prefHeight="42.0" onAction="#addMovie" prefWidth="88.0" text="Add">
+            <Button fx:id="add_button" mnemonicParsing="false" onAction="#addMovie" prefHeight="42.0" prefWidth="88.0" text="Add">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="remove_button" mnemonicParsing="false" prefHeight="42.0" onAction="#removeMovie" prefWidth="88.0" text="Remove">
+            <Button fx:id="remove_button" mnemonicParsing="false" onAction="#removeMovie" prefHeight="42.0" prefWidth="88.0" text="Remove">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="save_button" mnemonicParsing="false" prefHeight="42.0" onAction="#saveMovie" prefWidth="88.0" text="Save">
+            <Button fx:id="save_button" mnemonicParsing="false" onAction="#saveMovie" prefHeight="42.0" prefWidth="88.0" text="Save">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
          </children>
       </HBox>
-      <StackPane layoutX="366.0" layoutY="14.0" prefHeight="51.0" prefWidth="131.0">
+      <StackPane layoutX="267.0" layoutY="14.0" prefHeight="51.0" prefWidth="261.0">
          <children>
-            <Label fx:id="movie_title" text="Movie">
+            <Label fx:id="movie_title" text="Manage Movies">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
          </children>
       </StackPane>
-      <VBox fx:id="iamgeuellabel" alignment="CENTER" layoutX="14.0" layoutY="40.0" prefHeight="306.0" prefWidth="104.0" spacing="30.0">
-         <children>
-            <Label fx:id="name" prefHeight="28.0" prefWidth="55.0" text="Name:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="genre1" prefHeight="21.0" prefWidth="53.0" text="Genre:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="duration1" prefHeight="21.0" prefWidth="65.0" text="Duration:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label prefHeight="21.0" prefWidth="68.0" text="ImageUrl:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="148.0" prefHeight="21.0" prefWidth="85.0" text="Description:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="118.0" layoutY="69.0" prefHeight="318.0" prefWidth="160.0" spacing="25.0">
-         <children>
-            <TextField fx:id="namebox" />
-            <TextField fx:id="genrebox" />
-            <TextField fx:id="durationbox" />
-            <TextField fx:id="imageurlbox" />
-            <TextArea fx:id="textarea" prefHeight="90.0" prefWidth="160.0" />
-         </children>
-      </VBox>
    </children>
 </AnchorPane>

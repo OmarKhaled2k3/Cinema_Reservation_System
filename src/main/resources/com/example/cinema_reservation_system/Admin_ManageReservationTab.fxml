@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="538.0" prefWidth="868.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminManage_ReservationController">
+<AnchorPane prefHeight="573.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminManage_ReservationController">
    <children>
       <StackPane layoutX="83.0" prefHeight="49.0" prefWidth="702.0">
          <children>
@@ -39,7 +39,7 @@
             </Button>
          </children>
       </HBox>
-      <TableView fx:id="reservation_table" layoutX="26.0" layoutY="92.0" prefHeight="304.0" prefWidth="824.0">
+      <TableView fx:id="reservation_table" layoutX="26.0" layoutY="92.0" prefHeight="304.0" prefWidth="798.0">
         <columns>
           <TableColumn fx:id="resid_column" prefWidth="50.0" text="Res ID" />
           <TableColumn fx:id="cusid_column" prefWidth="46.0" text="Cus ID" />
@@ -50,13 +50,13 @@
                   <TableColumn fx:id="foodqty_subcolumn" prefWidth="75.0" text="Qty" />
                </columns>
             </TableColumn>
-            <TableColumn fx:id="receipt_column" prefWidth="200.0" text="Receipt">
+            <TableColumn fx:id="receipt_column" prefWidth="177.0" text="Receipt">
                <columns>
                   <TableColumn fx:id="seatprice_subcolumn" prefWidth="75.0" text="Seats Price" />
                   <TableColumn fx:id="foodprice_subcolumn" prefWidth="75.0" text="Food Price" />
                </columns>
             </TableColumn>
-            <TableColumn fx:id="totalprice_column" prefWidth="170.0" text="Total" />
+            <TableColumn fx:id="totalprice_column" prefWidth="143.0" text="Total" />
         </columns>
       </TableView>
       <Label fx:id="showtimeMovie" alignment="CENTER" layoutX="24.0" layoutY="43.0" prefHeight="40.0" prefWidth="824.0" text="Showtime/Movie">

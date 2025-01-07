@@ -11,10 +11,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminShowtab2Controller">
+<AnchorPane prefHeight="573.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminShowtab2Controller">
    <children>
-      <ListView fx:id="list_view" layoutX="286.0" layoutY="77.0" prefHeight="200.0" prefWidth="306.0" />
-      <StackPane layoutX="205.0" layoutY="6.0" prefHeight="66.0" prefWidth="190.0">
+      <ListView fx:id="list_view" layoutX="439.0" layoutY="112.0" prefHeight="294.0" prefWidth="314.0" />
+      <StackPane layoutX="302.0" layoutY="14.0" prefHeight="66.0" prefWidth="190.0">
          <children>
             <Label alignment="CENTER" prefHeight="44.0" prefWidth="118.0" text="ShowTime">
                <font>
@@ -23,7 +23,7 @@
             </Label>
          </children>
       </StackPane>
-      <VBox alignment="CENTER" layoutX="14.0" layoutY="77.0" prefHeight="222.0" prefWidth="100.0" spacing="2.5">
+      <VBox alignment="CENTER" layoutX="120.0" layoutY="131.0" prefHeight="222.0" prefWidth="100.0" spacing="2.5">
          <children>
             <Label layoutX="22.0" layoutY="164.0" prefHeight="38.0" prefWidth="77.0" text="Day:">
                <font>
@@ -37,14 +37,14 @@
             </Label>
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="114.0" layoutY="112.0" prefHeight="187.0" prefWidth="144.0" spacing="15.0">
+      <VBox alignment="CENTER" layoutX="236.0" layoutY="166.0" prefHeight="187.0" prefWidth="144.0" spacing="15.0">
          <children>
             <DatePicker fx:id="datepicker" />
             <TextField fx:id="time_field" />
             <Label alignment="CENTER" opacity="0.53" text="HH:MM:SS" />
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutY="299.0" prefHeight="101.0" prefWidth="600.0" spacing="80.0">
+      <HBox alignment="CENTER" layoutX="80.0" layoutY="449.0" prefHeight="101.0" prefWidth="600.0" spacing="80.0">
          <children>
             <Button fx:id="btn_back" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="80.0" text="Back">
                <font>
@@ -68,7 +68,7 @@
             </Button>
          </children>
       </HBox>
-      <Label fx:id="movie_label" alignment="CENTER" layoutX="380.0" layoutY="39.0" opacity="0.49" prefHeight="35.0" prefWidth="118.0" text="Movie_Label">
+      <Label fx:id="movie_label" alignment="CENTER" layoutX="537.0" layoutY="72.0" opacity="0.49" prefHeight="35.0" prefWidth="118.0" text="Movie_Label">
          <font>
             <Font size="18.0" />
          </font>

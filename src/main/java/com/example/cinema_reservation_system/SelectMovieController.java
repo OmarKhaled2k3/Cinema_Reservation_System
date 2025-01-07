@@ -46,8 +46,8 @@ public class SelectMovieController implements Initializable {
         grid.setVgap(10);
         // grid.setGridLinesVisible(true);
         ArrayList<Movie>movies=retrieveMovies();
-        int rows = (movies.size() / 4) + 1;
-        int columns = 4;
+        int rows = (movies.size() / 3) + 1;
+        int columns = 3;
         int movieID = 0;
 
 
@@ -69,8 +69,8 @@ public class SelectMovieController implements Initializable {
         try {
             image = new Image(imageurl);
             pic = new ImageView();
-            pic.setFitWidth(160);
-            pic.setFitHeight(220);
+            pic.setFitWidth(216);
+            pic.setFitHeight(304);
             pic.setImage(image);
             pic.setId(String.valueOf(id));
             hb.getChildren().add(pic);

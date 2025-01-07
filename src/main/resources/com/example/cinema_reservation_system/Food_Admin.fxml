@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminFoodController">
+<AnchorPane prefHeight="573.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminFoodController">
    <children>
-      <StackPane layoutX="205.0" layoutY="21.0" prefHeight="56.0" prefWidth="190.0">
+      <StackPane layoutX="302.0" layoutY="21.0" prefHeight="56.0" prefWidth="190.0">
          <children>
             <Label alignment="CENTER" prefHeight="44.0" prefWidth="77.0" text="Food">
                <font>
@@ -22,7 +22,7 @@
             </Label>
          </children>
       </StackPane>
-      <VBox alignment="CENTER" layoutX="14.0" layoutY="77.0" prefHeight="222.0" prefWidth="100.0" spacing="2.5">
+      <VBox alignment="CENTER" layoutX="90.0" layoutY="143.0" prefHeight="222.0" prefWidth="100.0" spacing="2.5" style="-fx-background-color: 23565;">
          <children>
             <Label prefHeight="38.0" prefWidth="77.0" text="Name:">
                <font>
@@ -51,7 +51,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="114.0" layoutY="77.0" prefHeight="222.0" prefWidth="144.0" spacing="15.0">
+      <VBox alignment="CENTER" layoutX="204.0" layoutY="143.0" prefHeight="222.0" prefWidth="144.0" spacing="15.0">
          <children>
             <TextField fx:id="name_field" />
             <TextField fx:id="price_field" layoutX="10.0" layoutY="98.0" />
@@ -60,31 +60,31 @@
             <TextField fx:id="url_field" layoutX="10.0" layoutY="38.0" />
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutY="299.0" prefHeight="101.0" prefWidth="684.0" spacing="80.0">
+      <HBox alignment="CENTER" layoutX="55.0" layoutY="458.0" prefHeight="101.0" prefWidth="684.0" spacing="80.0">
          <children>
-            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Back" onAction="#goBack">
+            <Button fx:id="btn_back" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="80.0" text="Back">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_add" layoutX="284.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" onAction="#addFood" prefWidth="80.0" text="Add">
+            <Button fx:id="btn_add" layoutX="284.0" layoutY="48.0" mnemonicParsing="false" onAction="#addFood" prefHeight="40.0" prefWidth="80.0" text="Add">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_remove" layoutX="310.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="87.0" onAction="#removeFood" text="Remove">
+            <Button fx:id="btn_remove" layoutX="310.0" layoutY="48.0" mnemonicParsing="false" onAction="#removeFood" prefHeight="40.0" prefWidth="87.0" text="Remove">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_save" layoutX="336.0" layoutY="48.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" onAction="#saveFood" text="Save">
+            <Button fx:id="btn_save" layoutX="336.0" layoutY="48.0" mnemonicParsing="false" onAction="#saveFood" prefHeight="40.0" prefWidth="80.0" text="Save">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
          </children>
       </HBox>
-      <TableView fx:id="table_view" layoutX="273.0" layoutY="88.0" prefHeight="200.0" prefWidth="375.0">
+      <TableView fx:id="table_view" layoutX="386.0" layoutY="99.0" prefHeight="310.0" prefWidth="375.0">
         <columns>
           <TableColumn fx:id="name_column" prefWidth="75.0" text="Name" />
           <TableColumn fx:id="price_column" prefWidth="75.0" text="Price" />

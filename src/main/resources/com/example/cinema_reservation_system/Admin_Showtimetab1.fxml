@@ -8,10 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminShowtab1Controller">
+<AnchorPane prefHeight="573.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cinema_reservation_system.AdminShowtab1Controller">
    <children>
-      <VBox alignment="CENTER" layoutX="181.0" layoutY="14.0" prefHeight="125.0" prefWidth="247.0" spacing="20.0">
+      <VBox alignment="CENTER" layoutX="274.0" layoutY="34.0" prefHeight="125.0" prefWidth="247.0" spacing="20.0">
          <children>
             <Label alignment="CENTER" prefHeight="34.0" prefWidth="106.0" text="Showtimes">
                <font>
@@ -25,15 +24,15 @@
             </Label>
          </children>
       </VBox>
-      <ComboBox fx:id="box_movies" layoutX="208.0" layoutY="175.0" prefHeight="18.0" prefWidth="193.0" promptText="Movies" />
-      <HBox alignment="CENTER" layoutX="-1.0" layoutY="286.0" prefHeight="100.0" prefWidth="600.0" spacing="150.0">
+      <ComboBox fx:id="box_movies" layoutX="305.0" layoutY="240.0" prefHeight="18.0" prefWidth="193.0" promptText="Movies" />
+      <HBox alignment="CENTER" layoutX="101.0" layoutY="444.0" prefHeight="100.0" prefWidth="600.0" spacing="150.0">
          <children>
-            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Back" onAction="#goBack">
+            <Button fx:id="btn_back" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="80.0" text="Back">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_continue" layoutX="270.0" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="89.0" text="Continue" onAction="#gotomanage2">
+            <Button fx:id="btn_continue" layoutX="270.0" layoutY="40.0" mnemonicParsing="false" onAction="#gotomanage2" prefHeight="40.0" prefWidth="89.0" text="Continue">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
