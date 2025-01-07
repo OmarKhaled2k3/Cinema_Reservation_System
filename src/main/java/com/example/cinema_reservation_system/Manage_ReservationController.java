@@ -207,6 +207,7 @@ public class Manage_ReservationController {
                     totalPriceFood=FoodItem.getTotalCost(foodItems);
                     FoodItemsList.add(foodItems);
                 }
+                else FoodItemsList.add(new ArrayList<>());
                 double totalPriceSeats=Seat.TotalSeatsPrice();
                 double totalPrice=totalPriceSeats+totalPriceFood;
                 ReservationDataObject reservationDataObject = new ReservationDataObject(reservationID,movieTitle,showtime,seatsReservedString,FoodItemsDisplayFormat,FoodItemsQtyDisplayFormat,totalPriceSeats,totalPriceFood,totalPrice);
@@ -237,11 +238,7 @@ public class Manage_ReservationController {
         reservation.setId(reservationIDs.get(index));
         reservation.setShowtime(showTimesReserved.get(index));
         reservation.addSeatSelected(seatsReservedbyIndex.get(index));
-            if (index < FoodItemsList.size() && FoodItemsList.get(index) != null) {
-                reservation.addFoodOrder(FoodItemsList.get(index));
-            } else {
-                reservation.addFoodOrder(new ArrayList<>());  // Add empty list if no food order exists
-            }
+        reservation.addFoodOrder(FoodItemsList.get(index));
         reservation.setSeatsOld(seatsReservedbyIndex.get(index));
         SceneController.launchScene("Seats_Admin.fxml");
         }

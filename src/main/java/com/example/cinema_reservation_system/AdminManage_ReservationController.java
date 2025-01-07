@@ -201,6 +201,7 @@ public class AdminManage_ReservationController implements Initializable {
                         totalPriceFood=FoodItem.getTotalCost(foodItems);
                         FoodItemsList.add(foodItems);
                     }
+                    else FoodItemsList.add(new ArrayList<>());
                     double totalPriceSeats=Seat.TotalSeatsPrice();
                     double totalPrice=totalPriceSeats+totalPriceFood;
                     Customer customer = new Customer(CustomerName,CustomerID);
@@ -226,11 +227,7 @@ public class AdminManage_ReservationController implements Initializable {
             Reservation reservation = Reservation.getInstance();
             reservation.setId(reservationIDs.get(index));
             reservation.addSeatSelected(seatsReservedbyIndex.get(index));
-            if (index < FoodItemsList.size() && FoodItemsList.get(index) != null) {
-                reservation.addFoodOrder(FoodItemsList.get(index));
-            } else {
-                reservation.addFoodOrder(new ArrayList<>());  // Add empty list if no food order exists
-            }
+            reservation.addFoodOrder(FoodItemsList.get(index));
             reservation.setSeatsOld(seatsReservedbyIndex.get(index));
             reservation.setCustomer(customers.get(index));
             customers.get(index).setModify(true);
@@ -255,6 +252,7 @@ public class AdminManage_ReservationController implements Initializable {
             reservation.addFoodOrder(FoodItemsList.get(index));
             reservation.setSeatsOld(seatsReservedbyIndex.get(index));
             reservation.getShowtime().UpdateSeatsInverted();
+            reservation.setCustomer(customers.get(index));
             reservation.getCustomer().cancelReservation();
             reservation.reset(reservationIDs.get(index));
             RemoveatIndex(index);

@@ -27,7 +27,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_remove" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Remove">
+            <Button fx:id="btn_remove" mnemonicParsing="false" onAction="#remove" prefHeight="40.0" prefWidth="90.0" text="Remove">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
