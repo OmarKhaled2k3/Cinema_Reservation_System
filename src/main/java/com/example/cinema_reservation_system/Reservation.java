@@ -22,6 +22,16 @@ public class Reservation implements Printable {
     // Variables
     private int id;
     private Customer customer;            // Customer object
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
+    private Admin admin;
     private int movieId;                  // Selected movie ID
     private ShowTime showtime;            // Showtime object
     private FoodOrder foodOrder;       // Food items list

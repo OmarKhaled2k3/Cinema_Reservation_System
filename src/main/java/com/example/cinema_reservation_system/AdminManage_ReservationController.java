@@ -239,10 +239,6 @@ public class AdminManage_ReservationController implements Initializable {
     private void goBack() throws Exception{
         SceneController.launchScene("Admin_ReservationTab.fxml");
     }
-    @FXML
-    private void goBackc() throws Exception{
-        SceneController.launchScene("Customer_View.fxml");
-    }
     public void remove(ActionEvent actionEvent) {
         int index = reservation_table.getSelectionModel().getSelectedIndex();
         if (index != -1) {
@@ -253,8 +249,7 @@ public class AdminManage_ReservationController implements Initializable {
             reservation.setSeatsOld(seatsReservedbyIndex.get(index));
             reservation.getShowtime().UpdateSeatsInverted();
             reservation.setCustomer(customers.get(index));
-            reservation.getCustomer().cancelReservation();
-            reservation.reset(reservationIDs.get(index));
+            reservation.getAdmin().cancelReservation();
             RemoveatIndex(index);
             reservation_table.refresh();
             showAlert("","Reservaton deleted successfully");

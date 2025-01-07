@@ -29,7 +29,10 @@ public class Receipt_Controller {
         generateReceipt();
         list_view.setItems(listViewItems);
         updateTotalPriceLabel();
-        if(reservation.getCustomer()!=null){
+        if(reservation.getAdmin()!=null && reservation.getCustomer()!=null){
+            reservation.getAdmin().modifyReservation();
+        }
+        else if(reservation.getCustomer()!=null){
             if(reservation.getCustomer().isModify()) reservation.getCustomer().modifyReservation();
             else reservation.getCustomer().createReservation();
         }
@@ -102,6 +105,12 @@ public class Receipt_Controller {
 
     @FXML
     void confirm(ActionEvent event) throws IOException {
-        SceneController.launchScene("Customer_View.fxml");
+        Reservation reservation=Reservation.getInstance();
+        if(reservation.getCustomer()!=null && reservation.getAdmin()==null) {
+            SceneController.launchScene("Customer_View.fxml");
+        }
+        else if(reservation.getAdmin()!=null){
+            SceneController.launchScene("Admin_ManageReservationTab.fxml");
+        }
     }
 }

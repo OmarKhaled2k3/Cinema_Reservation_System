@@ -72,13 +72,17 @@ public class login_controller implements Initializable {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 boolean isAdmin = resultSet.getInt("isAdmin") == 1;
-
+                Reservation reservation = Reservation.getInstance();
+                reservation.reset(1);
+                reservation.setAdmin(null);
+                reservation.setCustomer(null);
                 // Redirect based on isAdmin value and pass first name to AdminPageController
                 if (isAdmin) {
+                    reservation.setAdmin(new Admin(name));
                     AdminPageController.setName(name);  // Assuming you add a setter in AdminPageController
                     SceneController.launchScene("Admin_View.fxml");
                 } else {
-                    Reservation reservation = Reservation.getInstance();
+
                     reservation.setCustomer(new Customer(name,id));
                     SceneController.launchScene("Customer_View.fxml");
                 }

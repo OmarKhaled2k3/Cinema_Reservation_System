@@ -5,8 +5,9 @@ abstract class User implements Printable {
     protected String email;
     protected String username;
     private String password; // In real applications, store this securely (hashed)
-    private boolean admin;
     private int id;
+
+
 
     public int getId() {
         return id;
@@ -14,14 +15,6 @@ abstract class User implements Printable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
     }
 
     public User(String name, String email,  String username, String password) {
@@ -38,7 +31,8 @@ abstract class User implements Printable {
         this.name = name;
         this.id = id;
     }
-
+    public User(String name) {
+    }
     public String getName() {
         return name;
     }
