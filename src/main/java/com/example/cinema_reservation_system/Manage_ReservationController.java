@@ -183,7 +183,13 @@ public class Manage_ReservationController {
                 int movieID = resultSet.getInt("MovieID");
                 int showtimeID = resultSet.getInt("ShowtimeID");
                 String foodOrderItem = resultSet.getString("FoodOrderItem"); // 4600000 Changed to String to match the food item type
-                String foodOrderQty = resultSet.getString("FoodQuantity"); // 5300000 Changed to String to match the food item type
+                String foodOrderQty = resultSet.getString("FoodQuantity");
+                if (foodOrderItem == null) {
+                    foodOrderItem = "";  // Set to empty string if null
+                }
+                if (foodOrderQty == null) {
+                    foodOrderQty = "0";  // Set to 0 if null
+                }// 5300000 Changed to String to match the food item type
                 String movieTitle = resultSet.getString("MovieTitle");
                 String showtime = resultSet.getString("Showtime");
                 String seatsReservedString=resultSet.getString("Seats").trim();
@@ -231,7 +237,11 @@ public class Manage_ReservationController {
         reservation.setId(reservationIDs.get(index));
         reservation.setShowtime(showTimesReserved.get(index));
         reservation.addSeatSelected(seatsReservedbyIndex.get(index));
-        reservation.addFoodOrder(FoodItemsList.get(index));
+            if (index < FoodItemsList.size() && FoodItemsList.get(index) != null) {
+                reservation.addFoodOrder(FoodItemsList.get(index));
+            } else {
+                reservation.addFoodOrder(new ArrayList<>());  // Add empty list if no food order exists
+            }
         reservation.setSeatsOld(seatsReservedbyIndex.get(index));
         SceneController.launchScene("Seats_Admin.fxml");
         }
