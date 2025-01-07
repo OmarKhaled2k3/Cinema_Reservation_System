@@ -32,11 +32,6 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btn_save" layoutX="396.0" layoutY="24.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Save">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Button>
             <Button fx:id="btn_modify" mnemonicParsing="false" onAction="#handleModifyButton" prefHeight="40.0" prefWidth="90.0" text="Modify">
                <font>
                   <Font name="System Bold" size="16.0" />
@@ -44,7 +39,7 @@
             </Button>
          </children>
       </HBox>
-      <TableView fx:id="reservation_table" layoutX="26.0" layoutY="92.0" prefHeight="300.0" prefWidth="824.0">
+      <TableView fx:id="reservation_table" layoutX="26.0" layoutY="92.0" prefHeight="304.0" prefWidth="824.0">
         <columns>
           <TableColumn fx:id="resid_column" prefWidth="50.0" text="Res ID" />
           <TableColumn fx:id="cusid_column" prefWidth="46.0" text="Cus ID" />
@@ -64,7 +59,7 @@
             <TableColumn fx:id="totalprice_column" prefWidth="170.0" text="Total" />
         </columns>
       </TableView>
-      <Label fx:id="showtimeMovie" alignment="CENTER" layoutX="24.0" layoutY="43.0" prefHeight="40.0" prefWidth="824.0" text="Showtime : 2025-01-05 11:00:00   Movie: Fight Club">
+      <Label fx:id="showtimeMovie" alignment="CENTER" layoutX="24.0" layoutY="43.0" prefHeight="40.0" prefWidth="824.0" text="Showtime/Movie">
          <font>
             <Font size="20.0" />
          </font>

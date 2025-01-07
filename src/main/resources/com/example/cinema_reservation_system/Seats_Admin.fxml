@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -249,16 +248,6 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-      <HBox fx:id="AdminHbox" disable="true" layoutX="247.0" layoutY="461.0" prefHeight="39.0" prefWidth="301.0" spacing="10.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="127.0" text="Enter Customer ID:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <TextField fx:id="idtextfield" alignment="CENTER" prefHeight="34.0" prefWidth="149.0" promptText="ID" />
-         </children>
-      </HBox>
       <VBox layoutX="703.0" layoutY="296.0" prefHeight="68.0" prefWidth="74.0">
          <children>
             <HBox prefHeight="14.0" prefWidth="74.0" spacing="5.0">

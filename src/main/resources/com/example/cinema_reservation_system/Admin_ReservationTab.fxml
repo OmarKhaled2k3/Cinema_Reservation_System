@@ -13,17 +13,12 @@
    <children>
       <HBox alignment="CENTER" layoutX="-1.0" layoutY="316.0" prefHeight="84.0" prefWidth="600.0" spacing="120.0">
          <children>
-            <Button fx:id="btn_back" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Back" onAction="#goBack">
+            <Button fx:id="btn_back" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="80.0" text="Back">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_createnew" layoutX="160.0" layoutY="32.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Create New">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_edit" layoutX="260.0" layoutY="32.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Edit" onAction="#gotomanage">
+            <Button fx:id="btn_edit" layoutX="260.0" layoutY="32.0" mnemonicParsing="false" onAction="#gotomanage" prefHeight="40.0" prefWidth="80.0" text="Edit">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
