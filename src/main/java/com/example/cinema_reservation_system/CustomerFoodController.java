@@ -195,6 +195,9 @@ public class CustomerFoodController implements Initializable {
         FoodOrder foodOrder = new FoodOrder(selectedItems);
         reservation.addFoodOrder(foodOrder);
         }
+        else if(reservation.getFoodOrder()!=null){
+            reservation.clearFoodOrder();
+        }
         SceneController.launchScene("Receipt_Tab.fxml");
     }
 }
