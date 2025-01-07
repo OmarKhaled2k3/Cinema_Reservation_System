@@ -1,6 +1,7 @@
 package com.example.cinema_reservation_system;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
@@ -9,12 +10,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class AdminManage_ReservationController {
+import static com.example.cinema_reservation_system.AdminReservationTabController.getShowTimeId;
+
+public class AdminManage_ReservationController implements Initializable {
     static ArrayList<ShowTime> showTimesReserved = new ArrayList<>();
     static ArrayList<ArrayList<Seat>> seatsReservedbyIndex = new ArrayList<ArrayList<Seat>>();
     static ArrayList<ArrayList<FoodItem>> FoodItemsList = new ArrayList<ArrayList<FoodItem>>();
@@ -29,6 +34,8 @@ public class AdminManage_ReservationController {
     private Button btn_remove;
     @FXML
     private Button btn_save;
+
+
 
 
 
@@ -140,7 +147,7 @@ public class AdminManage_ReservationController {
     ArrayList<ReservationDataObject> reservationDataObjectList = new ArrayList<>();
 
     @FXML
-    private void initialize(){
+    public void initialize(java.net.URL location, ResourceBundle resources) {
         reservation_table.getItems().clear();
         fooditem_subcolumn.setCellValueFactory(new PropertyValueFactory<>("fooditems"));
         foodprice_subcolumn.setCellValueFactory(new PropertyValueFactory<>("foodPrice"));
@@ -151,17 +158,21 @@ public class AdminManage_ReservationController {
         showtime_column.setCellValueFactory(new PropertyValueFactory<>("showtime"));
         moviename_column.setCellValueFactory(new PropertyValueFactory<>("movieName"));
         resid_column.setCellValueFactory(new PropertyValueFactory<>("resID"));
+        resid_column.setCellValueFactory(new PropertyValueFactory<>("CustomerID"));
         Reservation reservation = Reservation.getInstance();
         if(reservation.getCustomer() != null){
-            retrieveReservations(reservation.getCustomer().getId());
+            retrieveReservations(getShowTimeId());
+            System.out.println(getShowTimeId());
         }
+        reservation_table.getItems().setAll(reservationDataObjectList);
     }
 
-    private void retrieveReservations(int customerID){
+   @FXML
+    private void retrieveReservations( int x){
         Database db = Database.getInstance();
         String query = String.format("SELECT" +
                 "    r.ID AS ReservationID," +
-                "r.CustomerID AS CustomerID," +
+                "  r.CustomerID AS CustomerID," +
                 "    m.title AS MovieTitle," +
                 "    m.ID AS MovieID," +
                 "    s.ID AS ShowtimeID, "+
@@ -179,9 +190,9 @@ public class AdminManage_ReservationController {
                 " LEFT JOIN " +
                 "    foodorder fo ON r.FoodOrderID = fo.ID" +
                 " WHERE " +
-                "    r.customerID = %d" +
+                "    s.ID = %d" +
                 " GROUP BY " +
-                "    r.ID, m.title, m.ID, s.ID, s.time, r.seats, fo.food, fo.quantity",customerID);
+                "    r.ID, m.title, m.ID, s.ID, s.time, r.seats, fo.food, fo.quantity",x);
         ResultSet resultSet = db.executeQuery(query);
         try{
             showTimesReserved.clear();

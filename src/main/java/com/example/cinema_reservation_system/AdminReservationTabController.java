@@ -94,26 +94,28 @@ public class AdminReservationTabController implements Initializable  {
         return null;
     }
 
-    public static int ShowTimeId=1;
+    public static int ShowTimeId;
     private void loadShowtimes(int movieId) {
         showtimes.clear();
         try {
-            String query = "SELECT time,id FROM showtime WHERE MovieID = ?";
+            String query = "SELECT time, id FROM showtime WHERE MovieID = ?";
             PreparedStatement stmt = db.getConnection().prepareStatement(query);
             stmt.setInt(1, movieId);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 showtimes.add(rs.getString("time"));
-                ShowTimeId=rs.getInt("id");
+                ShowTimeId = rs.getInt("id");
             }
             rs.close();
         } catch (SQLException e) {
-            // Handle the exception gracefully (e.g., display an error message, log the error)
             e.printStackTrace();
         }
-    }
+       }
 
+       public static int getShowTimeId(){
+        return ShowTimeId;
+    }
     @FXML
     private void goBack() throws Exception{
         SceneController.launchScene("Admin_View.fxml");
