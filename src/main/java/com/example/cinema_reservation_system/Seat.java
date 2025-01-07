@@ -73,8 +73,8 @@ public class Seat implements Printable{
             for(Seat seat :standardSeats){
                 standardDetails+=seat.seatNumber+", ";
             }
-            standardDetails+="] x"+String.valueOf(vipSeatsQty);
-            standardDetails+=" TP:"+String.valueOf(standardSeatsQty*standardSeats.getFirst().getSeatPrice() + '\n');
+            standardDetails+="] x"+String.valueOf(standardSeatsQty);
+            standardDetails+=" TP:"+String.valueOf((double)standardSeatsQty*(standardSeats.getFirst().getSeatPrice())) +" $" +'\n';
         }
         if(!vipSeats.isEmpty()){
             vipDetails="VIP#: [";
@@ -82,10 +82,10 @@ public class Seat implements Printable{
                 vipDetails+=seat.seatNumber+", ";
             }
             vipDetails+="] x"+String.valueOf(vipSeatsQty);
-            vipDetails+=" TP="+String.valueOf(vipSeatsQty*vipSeats.getFirst().getSeatPrice());
+            vipDetails+=" TP:"+String.valueOf(vipSeatsQty*vipSeats.getFirst().getSeatPrice()) + " $";
         }
 
-        return standardDetails+'\n'+vipDetails;
+        return standardDetails+vipDetails;
 
     }
     public boolean isReserved() { return isReserved; }

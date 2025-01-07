@@ -10,11 +10,15 @@ import javafx.scene.control.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.ResourceBundle;
 
 public class AdminReservationTabController implements Initializable  {
-
+    Dictionary<String, ArrayList<ShowTime>> selectedShowtimebyMovie= new Hashtable<>();
     @FXML
     private Button btn_back;
 
@@ -46,7 +50,7 @@ public class AdminReservationTabController implements Initializable  {
         movie_dropdown.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 selectedmovie = getMovieByTitle(newValue);
-                loadShowtimes(selectedmovie.getId());
+                loadShowtimes(selectedmovie.getId(),selectedmovie.getTitle());
                 showtime_list.setItems(showtimes);
             }
         });
@@ -94,28 +98,37 @@ public class AdminReservationTabController implements Initializable  {
         return null;
     }
 
-    public static int ShowTimeId;
-    private void loadShowtimes(int movieId) {
+    private void loadShowtimes(int movieId,String movieTitle) {
         showtimes.clear();
         try {
-            String query = "SELECT time, id FROM showtime WHERE MovieID = ?";
+            String query = "SELECT time, id,seats FROM showtime WHERE MovieID = ?";
             PreparedStatement stmt = db.getConnection().prepareStatement(query);
             stmt.setInt(1, movieId);
             ResultSet rs = stmt.executeQuery();
-
+            String time="";
+            int ShowTimeId=1;
+            Movie movie = new Movie(movieId,movieTitle);
+            ArrayList<ShowTime>showTimes = new ArrayList<>();
             while (rs.next()) {
-                showtimes.add(rs.getString("time"));
+                time=rs.getString("time");
+                String showTimeSeats=rs.getString("seats").trim();
                 ShowTimeId = rs.getInt("id");
+                showtimes.add(time);
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                LocalDateTime dateTime = LocalDateTime.parse(time, formatter);
+                ShowTime showTime = new ShowTime(ShowTimeId,movie,dateTime);
+                ArrayList<Seat> showTimeSeatsList = Seat.SeatsConversion(showTimeSeats);/// Seats# 1,4,6 Normal Total Price=10 \n Seats# 50,55 VIP Seats TP = 200
+                showTime.setSeatList(showTimeSeatsList);
+                showTimes.add(showTime);
             }
+            selectedShowtimebyMovie.put(movieTitle,showTimes);
             rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
        }
 
-       public static int getShowTimeId(){
-        return ShowTimeId;
-    }
     @FXML
     private void goBack() throws Exception{
         SceneController.launchScene("Admin_View.fxml");
@@ -123,6 +136,13 @@ public class AdminReservationTabController implements Initializable  {
 
     @FXML
     private void gotomanage() throws Exception{
+        int index = showtime_list.getSelectionModel().getSelectedIndex();
+        Reservation reservation = Reservation.getInstance();
+        if(index!=-1){
+            ShowTime selectedShowtime= (selectedShowtimebyMovie.get(selectedmovie.getTitle())).get(index);
+            reservation.setShowtime(selectedShowtime);
+
+        }
         SceneController.launchScene("Admin_ManageReservationTab.fxml");
     }
 }
