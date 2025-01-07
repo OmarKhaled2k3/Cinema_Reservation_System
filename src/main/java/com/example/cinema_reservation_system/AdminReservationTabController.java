@@ -94,16 +94,18 @@ public class AdminReservationTabController implements Initializable  {
         return null;
     }
 
+    public static int ShowTimeId=1;
     private void loadShowtimes(int movieId) {
         showtimes.clear();
         try {
-            String query = "SELECT time FROM showtime WHERE MovieID = ?";
+            String query = "SELECT time,id FROM showtime WHERE MovieID = ?";
             PreparedStatement stmt = db.getConnection().prepareStatement(query);
             stmt.setInt(1, movieId);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 showtimes.add(rs.getString("time"));
+                ShowTimeId=rs.getInt("id");
             }
             rs.close();
         } catch (SQLException e) {
