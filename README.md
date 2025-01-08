@@ -19,44 +19,53 @@ The Cinema Reservation System is a Java-based application that provides an inter
 - **Manage Reservations**: Oversee and modify user reservations.
 - **Manage Cafeteria**: Update food menus and pricing.
 
-## Database Schema
-The application relies on a MySQL database with the following structure:
 
-### Tables
-1. **Accounts Table**:
-   - `id` (INT, Primary Key)
-   - `username` (VARCHAR)
-   - `password` (VARCHAR)
-   - `role` (ENUM: 'user', 'admin')
 
-2. **Movies Table**:
-   - `id` (INT, Primary Key)
-   - `name` (VARCHAR)
-   - `genre` (VARCHAR)
-   - `duration` (TIME)
+## Java Classes Overview
 
-3. **Showtimes Table**:
-   - `id` (INT, Primary Key)
-   - `movie_id` (INT, Foreign Key)
-   - `time` (DATETIME)
-   - `seats` (TEXT)
+### Core Classes
+1. **`Reservation` (Singleton Pattern)**  
+   - Tracks the reservation process, including:
+     - Selected movie, showtime, and seats.
+     - Food orders.
+   - Provides methods for managing reservation data.
 
-4. **Reservations Table**:
-   - `id` (INT, Primary Key)
-   - `showtime_id` (INT, Foreign Key)
-   - `customer_id` (INT, Foreign Key)
-   - `seats` (TEXT)
-   - `food_order_id` (INT, Foreign Key, Nullable)
+2. **`Seat`**
+   - Represents an individual seat.
+   - Tracks attributes like seat number, type (`Standard`, `VIP`), and reservation status.
+   - Provides utilities for seat conversions (e.g., to/from strings).
 
-5. **Cafeteria Table**:
-   - `id` (INT, Primary Key)
-   - `name` (VARCHAR)
-   - `price` (DECIMAL)
+3. **`FoodOrder`**
+   - Represents a user's food order.
+   - Tracks items, quantities, and provides utility methods for serialization and deserialization.
 
-6. **FoodOrder Table**:
-   - `id` (INT, Primary Key)
-   - `food` (TEXT)
-   - `quantity` (TEXT)
+4. **`Database` (Singleton Pattern)**  
+   - Manages the database connection using JDBC.
+   - Provides methods for executing queries and updates.
+   - Abstracts database interactions for other components.
+
+5. **`Customer` and `Showtime`**  
+   - **Customer**: Represents users interacting with the system, encapsulating user details.  
+   - **Showtime**: Encapsulates the movie timing and seat availability.  
+
+6. **`Movie`**
+   - Represents a movie entity with attributes like name, genre, and duration.
+
+### JavaFX-Specific Components
+- **Login Screen**: Authenticates users and admins.
+- **Movie Selection Screen**: Displays available movies.
+- **Seat Selection Screen**: Allows users to select seats and highlights unavailable ones.
+- **Cart Screen**: Summarizes reservations, including seat and food selections.
+
+
+
+## Database Overview
+While the system relies on a MySQL database for persistence, the application focuses on Java classes to manage business logic. The database includes:
+- **Accounts** for authentication.
+- **Movies** and **Showtimes** for scheduling.
+- **Reservations** and **FoodOrder** for user actions.
+
+
 
 ## Setup Instructions
 
@@ -75,6 +84,8 @@ The application relies on a MySQL database with the following structure:
    mvn javafx:run
    ```
 
+
+
 ## Usage
 
 1. **Login**: Use your credentials to log in as a user or admin.
@@ -88,6 +99,8 @@ The application relies on a MySQL database with the following structure:
    - Manage user reservations.
    - Update cafeteria items and prices.
 
+
+
 ## Technologies Used
 - **JavaFX**: For the user interface.
 - **Scene Builder**: For designing the JavaFX UI.
@@ -96,6 +109,8 @@ The application relies on a MySQL database with the following structure:
 - **Maven**: For build automation.
 - **IntelliJ IDEA**: As the development environment.
 
+---
+
 ## Screenshots
 <img src="https://github.com/user-attachments/assets/4f90afcc-c577-4ca0-8cab-b4748304ce34" width="350">
 <img src="https://github.com/user-attachments/assets/6c7c847c-62d7-4672-b2b6-12dba3d38dc8" width="350">
@@ -103,6 +118,8 @@ The application relies on a MySQL database with the following structure:
 <img src="https://github.com/user-attachments/assets/09cc9f14-f37d-400e-aab0-34f85d74b418" width="350">
 <img src="https://github.com/user-attachments/assets/dc3bedc6-400a-4a65-b360-ed9fc9587dfd" width="350">
 <img src="https://github.com/user-attachments/assets/a574fd90-e528-448a-9ae2-5b733467d366" width="350">
+
+---
 
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request for any improvements or bug fixes.
