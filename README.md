@@ -112,12 +112,12 @@ While the system relies on a MySQL database for persistence, the application foc
 ---
 
 ## Screenshots
-<img src="https://github.com/user-attachments/assets/4f90afcc-c577-4ca0-8cab-b4748304ce34" width="350">
-<img src="https://github.com/user-attachments/assets/6c7c847c-62d7-4672-b2b6-12dba3d38dc8" width="350">
-<img src="https://github.com/user-attachments/assets/b2d252d6-06fc-4419-85ec-dffd226e4736" width="350">
-<img src="https://github.com/user-attachments/assets/09cc9f14-f37d-400e-aab0-34f85d74b418" width="350">
-<img src="https://github.com/user-attachments/assets/dc3bedc6-400a-4a65-b360-ed9fc9587dfd" width="350">
-<img src="https://github.com/user-attachments/assets/a574fd90-e528-448a-9ae2-5b733467d366" width="350">
+<img src="https://github.com/user-attachments/assets/4f90afcc-c577-4ca0-8cab-b4748304ce34" width="400">
+<img src="https://github.com/user-attachments/assets/6c7c847c-62d7-4672-b2b6-12dba3d38dc8" width="400">
+<img src="https://github.com/user-attachments/assets/b2d252d6-06fc-4419-85ec-dffd226e4736" width="400">
+<img src="https://github.com/user-attachments/assets/09cc9f14-f37d-400e-aab0-34f85d74b418" width="400">
+<img src="https://github.com/user-attachments/assets/dc3bedc6-400a-4a65-b360-ed9fc9587dfd" width="400">
+<img src="https://github.com/user-attachments/assets/a574fd90-e528-448a-9ae2-5b733467d366" width="400">
 
 ---
 
