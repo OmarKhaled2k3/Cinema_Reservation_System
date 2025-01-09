@@ -27,7 +27,7 @@ public class Customer_Controller {
 
     private ObservableList<HBox> listViewItems = FXCollections.observableArrayList();
     private static List<FoodItem> orderList = new ArrayList<>();
-
+//TEST
     private FoodItem[] foodItems = {
             new FoodItem("Burger", 5.0),
             new FoodItem("Pizza", 7.0),

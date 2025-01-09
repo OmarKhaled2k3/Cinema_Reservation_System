@@ -143,7 +143,7 @@ public class AdminMovieController implements Initializable {
             }
 
 
-            movieList.add(new Movie('0',title, genre, duration, description,imageurl));
+            movieList.add(new Movie('0',title, genre, duration, imageurl,description));
             clearFields();
         } catch (NumberFormatException e) {
             showAlert("Error", "Duration must be a number.");
